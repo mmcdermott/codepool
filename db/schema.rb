@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20111015224116) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
+    t.string   "stripe_token"
   end
 
 end
