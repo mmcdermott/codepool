@@ -1,10 +1,10 @@
 class Mailer < ActionMailer::Base
-  default from: "do-not-reply@codepool.org"
+  default from: "codepool <do-not-reply@codepool.org>"
 
-  def activation(recipient)
-    @account = recipient
+  def activation(user)
+    @account = user
     mail(
-      :to  => recipient.email_address_with_name,
+      :to  => user.formatted_email,
     );
   end
 end

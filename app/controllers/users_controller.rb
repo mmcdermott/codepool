@@ -86,6 +86,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_activation
+    @mail = Mailer.activation(current_user).deliver
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -102,6 +106,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in(@user)
+        @mail = Mailer.activation(current_user).deliver
+        @result = @mail.deliver;
         format.html { redirect_to '/' }
         format.json { render json: @user, status: :created, location: @user }
       else

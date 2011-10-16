@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate, :only => [:new]
+  before_filter :authenticate, :only => [:new, :pre_submit]
   
   # GET /projects
   # GET /projects.json
@@ -22,6 +22,11 @@ class ProjectsController < ApplicationController
       format.json { render json: @project }
     end
   end
+  
+  def pre_submit
+    @project = Project.find(params[:id])
+    @current_user = current_user
+  end
 
   
   
@@ -40,9 +45,10 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
     respond_to do |format|
       if @project.save
+        @project.link = "http://localhost:3000/projects/#{@project.id}"
+        @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

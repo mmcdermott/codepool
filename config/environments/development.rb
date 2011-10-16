@@ -27,4 +27,12 @@ Codepool::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+  ActionMailer::Base.raise_delivery_errors = true
+
+  #send mail with sendmail
+  ActionMailer::Base.delivery_method = :sendmail
+
+
 end
