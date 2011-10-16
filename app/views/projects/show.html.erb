@@ -23,7 +23,9 @@
 					<h1><%= "$ " + @project.price.to_s() %> </h1>
 					
 					</div>
-			
+          <% if @current_user.nil? %>
+            <!--Must be logged in to pledge-->
+          <% else %>
 						<form id="stripe-form" method="post" action='/submit_pledge'>
 						  <fieldset id="pledgeBox">
 						    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
@@ -36,11 +38,11 @@
 						  <fieldset id="creditCardFields">
 						    <div>
 						      <label for="stripe-ccNumber">Credit Card Number</label>
-						      <input type="text" id="stripe-ccNumber" value="4242424242424242">
+						      <input type="text" id="stripe-ccNumber" value="">
 						    </div>
 						    <div>
 						      <label for="stripe-ccCode">Security Code on Card (CVV)</label>
-						      <input type="text" id="stripe-ccCode" value="123">
+						      <input type="text" id="stripe-ccCode" value="">
 						    </div>
 						    <div>
 					        <label for="stripe-ccExpiration">Card Expiration</label>
@@ -54,7 +56,8 @@
 
 
 						  </fieldset>
-						</form>			
+						</form>
+          <% end %>
 		</div>
 	</div>
 </div>
