@@ -8,3 +8,6 @@ tmp/
 *~
 .project
 .DS_Store
+config/initializers/stripe.rb
+
+Gemfile.lock

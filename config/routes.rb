@@ -1,6 +1,10 @@
 Codepool::Application.routes.draw do
   resources :users
 
+  root :to => 'projects#index'
+  match	'home',					:to => 'pages#home'
+  
+  
   resources :projects
    resources :donations 
   resources :sessions, :only => [:new, :create, :destroy]
@@ -8,6 +12,7 @@ Codepool::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/submit_pledge', :to => 'users#submit_pledge'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

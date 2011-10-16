@@ -36,6 +36,36 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def submit_pledge
+    @user = User.find(params[:id]);
+    email = @user.email
+    token = @user.stripe_token
+
+    if (token.nil? || token.empty?) 
+      if (params[:token])
+        customer = Stripe::Customer.create(
+          :card => params[:token],
+          :description => email
+        )
+        token = @user.stripe_token = customer.id
+        @user.save
+      end
+    end
+
+  @token = token
+# charge the Customer instead of the card
+#Stripe::Charge.create(
+#    :amount => 1000, # in cents
+#    :currency => "usd",
+#    :customer => customer.id
+#)
+
+
+    respond_to do |format|
+      format.html 
+    end
+  end
+
   # POST /users
   # POST /users.json
   def create
