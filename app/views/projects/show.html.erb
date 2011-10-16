@@ -19,7 +19,7 @@
 <% if @current_user.nil? %>
   Not logged in
 <% else %>
-<%= @current_user.to_json %>
+
 <form id="stripe-form" method="post" action='/submit_pledge'>
   <fieldset id="pledgeBox">
     <label for='pledgeAmount'>
