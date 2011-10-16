@@ -182,6 +182,7 @@
 .project {
 padding-top:0.8em;
 margin-bottom:0.8em;
+min-height: 50px;
 }
 .ptotal {
 	overflow-x: hidden;
@@ -219,10 +220,9 @@ margin-bottom:0.8em;
 	-o-border-bottom-left-radius: 0px 0px;
 	-webkit-border-bottom-left-radius: 0px 0px;
 	display: block;
-	float: right;
-	width: 180px;
-	min-width: 180px;
-	min-height: 33px;
+	float: left;
+	min-width: 50px;
+	min-height: 30px;
 	b/ackground-color: rgb(102, 161, 19);
 	opacity: 1;
 	-we/bkit-box-shadow: rgb(0, 0, 0) 0px 0px 20px 1px inset;
@@ -421,7 +421,6 @@ margin-bottom:0.8em;
 }
 .ptitle {
 	color:#333;
-	text-decoration: underline;
 	font-weight:bold;
 	font-size:1.6em;
 }
@@ -439,7 +438,7 @@ margin-bottom:0.8em;
 	font-family: 'Nova Square', sans-serif;
 	font-size:2.1em;
 	color: #ff4444;
-	margin-left:1em;
+	margin-right:.5em;
 	margin-top:0.05em;
 }
 #cpname {
@@ -588,4 +587,27 @@ color: #ffffff;
 	width: 35px;
 	float: right;
 	margin-top: 8px;
+}
+
+#main-page {
+	padding-top: 5em;
+	padding-bottom: 2em;
+}
+#header_image {
+	height: 32px;
+	margin-top: 3px;
+	float: left;
+}
+
+#header_nav {
+	float: right;
+}
+
+#header_search {
+	margin-left: 21px;
+}
+
+.ptime {
+	font-size: 12pt;
+	font-family: 'Play', sans-serif;
 }

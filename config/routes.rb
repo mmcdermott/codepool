@@ -20,9 +20,9 @@ Codepool::Application.routes.draw do
   match '/sign_out', :to => 'sessions#destroy'
   match '/submit_pledge', :to => 'users#submit_pledge'
   match '/mail/send_activation', :to => 'users#send_activation'
-  match '/pages/about',   :to => 'pages#about'
-  match '/pages/faq',     :to => 'pages#faq'
-  match '/pages/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/faq',     :to => 'pages#faq'
+  match '/contact', :to => 'pages#contact'
 
 
 

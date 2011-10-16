@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span11">
-		<h2><%= @project.title %></h2>
+		 <h2><%= @project.title %></h2>
 		<div class="row">
 			<div class="span8">
 				<h3>Description</h3>
@@ -10,11 +10,18 @@
 			
 				<h3>Share This Issue </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
+
+		
+				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue.%20http%3A%2F%2Fcodepool.org%2FISSUE%2FPATH" > <img src="/assets/twitter.png"> </a>
+				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
+				
 				<%= @project.link %>
+
 			</div>
 			<div class="span3">
 			<h3> Current Bounty</h3>
 			<h1>$345 </h1>
+			
 			<a href="#" class="btn large primary">Pledge Moneys</a>
 			</div>
 		</div>
@@ -22,6 +29,8 @@
 	<div class="span5">
 	</div>
 </div>
+
+</br></br>
 	
 <div class="row">
 <div class="span6">

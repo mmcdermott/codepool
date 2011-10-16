@@ -1,0 +1,26 @@
+#pageContent {
+  border:1px solid #999;
+  padding: 1em;
+
+  h2 {
+    font-size:150%;
+  }
+  p {
+    font-size:110%;
+    &:first-letter {
+      font-size:120%;
+      font-weight:normal;
+    }
+    margin:1em 0; 
+  }
+
+  dl {
+    dt {
+      font-size:120%;
+      margin:1em;
+    }
+    dd {
+
+    }
+  }
+}

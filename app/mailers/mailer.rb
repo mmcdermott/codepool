@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "do-not-reply@codepool.org"
+  default from: "codepool <do-not-reply@codepool.org>"
 
   def activation(user)
     @account = user
