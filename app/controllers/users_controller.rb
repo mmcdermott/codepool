@@ -36,11 +36,48 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def submit_pledge
+    @user = User.find(params[:id]);
+    email = @user.email
+    token = @user.stripe_token
+
+    if (token.nil? || token.empty?) 
+      if (params[:token])
+        customer = Stripe::Customer.create(
+          :card => params[:token],
+          :description => email
+        )
+        token = @user.stripe_token = customer.id
+        @user.save
+      end
+    end
+
+  @token = token
+# charge the Customer instead of the card
+#Stripe::Charge.create(
+#    :amount => 1000, # in cents
+#    :currency => "usd",
+#    :customer => customer.id
+#)
+
+
+    respond_to do |format|
+      format.html 
+    end
+  end
+
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
-
+    password = params[:user][:password]
+    confirm = params[:user][:password_confirmation]
+    if password != confirm && !password.empty?
+      flash.now[:error] = "password does not match confirmation"
+      render "new"
+    end
+    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
+    @user = User.new(new_hash)
+    
     respond_to do |format|
       if @user.save
         sign_in(@user)
@@ -57,10 +94,17 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    password = params[:user][:password]
+    confirm = params[:user][:password_confirmation]
+    if password != confirm && !password.empty?
+      flash.now[:error] = "password does not match confirmation"
+      render "new"
+    end
+    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @user.update_attributes(new_hash)
+        format.html { redirect_to @user, notice: "#{params[:user]}" }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

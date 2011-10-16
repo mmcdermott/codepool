@@ -12,6 +12,7 @@ Codepool::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/submit_pledge', :to => 'users#submit_pledge'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -70,5 +71,5 @@ Codepool::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  root :to => 'pages#main'
+  root :to => 'projects#index'
 end
