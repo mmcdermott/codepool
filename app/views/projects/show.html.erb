@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span11">
-		 <h2><%= @project.title %></h2>
+		 <h2><%= link_to(@project.title, @project) %></h2>
 		<div class="row">
 			<div class="span8">
 				<h3>Description</h3>
@@ -10,19 +10,20 @@
 			
 				<h3>Share This Issue </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
-
-		
+				<%= link_to(@project.link, @project.link) %></br></br>
+				
 				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue.%20http%3A%2F%2Fcodepool.org%2FISSUE%2FPATH" > <img src="/assets/twitter.png"> </a>
 				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
-				
-				<%= @project.link %>
-
+				</br></br>
+				<h3>Submit a Result </h3>
+				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
+				<a href="#" class="btn small primary">Pledge</a>
 			</div>
 			<div class="span3">
 			<h3> Current Bounty</h3>
-			<h1>$345 </h1>
+			<h1><%= @project.price %> </h1>
 			
-			<a href="#" class="btn large primary">Pledge Moneys</a>
+			<a href="#" class="btn large primary">Pledge</a>
 			</div>
 		</div>
 	</div>
@@ -33,26 +34,17 @@
 </br></br>
 	
 <div class="row">
-<div class="span6">
-<div class="span10">
 
 
 	<p id="notice"><%= notice %></p>
 
-	<p>
-	  <div class="project_pledge_title">
-	    <h1><%= @project.title %></h1>
-	  </div>
+
     <div class = "project_pledge_price">
-	    <h1><%= " $#{@project.price}"%></h1>
+	    <h1><%= " Pledge $#{@project.price}"%></h1>
 	  </div>
-	</p>
+
 <br />
-	<p>
-    <div class="project_pledge_description">
-  	  <%= @project.description %>
-	  </div>
-	</p>
+
 
 
 	<div class="donate_form">
@@ -93,6 +85,7 @@
 	</form>
 	<% end %>
   </div>
+
   <br />
   <div class = "share_link">
     Do you have this issue too? Share it now with 
@@ -102,4 +95,6 @@
 
 </div>
 </div>
+
+
 
