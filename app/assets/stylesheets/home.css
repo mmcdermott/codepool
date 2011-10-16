@@ -1,4 +1,4 @@
-body {
+			body {
 	left: 0px;
 	top: 0px;
 	display: block;
@@ -179,8 +179,11 @@ body {
 	min-height: 72px;
 }
 
+#list-top{
+	float: left;
+}
+
 .project {
-padding-top:0.8em;
 margin-bottom:0.8em;
 }
 .ptotal {
@@ -219,7 +222,6 @@ margin-bottom:0.8em;
 	-o-border-bottom-left-radius: 0px 0px;
 	-webkit-border-bottom-left-radius: 0px 0px;
 	display: block;
-	float: left;
 	min-width: 50px;
 	b/ackground-color: rgb(102, 161, 19);
 	opacity: 1;
@@ -419,7 +421,8 @@ margin-bottom:0.8em;
 .ptitle {
 	color:#333;
 	font-weight:bold;
-	font-size:1.2em;
+	font-size:1.3em;
+	font-size:12pt;
 	padding-top: 9px;
 }
 .ptitle:hover {
@@ -441,6 +444,8 @@ margin-bottom:0.8em;
 	color: #eaaa08;
 	margin-right:.5em;
 	margin-top:0.05em;
+	width: 70px;
+	float: right;
 }
 #cpname {
 	font-family: 'Nova Square', sans-serif;
@@ -606,6 +611,35 @@ color: #ffffff;
 
 #header_search {
 	margin-left: 21px;
+}
+
+
+#sort-time{
+	float:right;
+	margin-left: 10px;
+	padding-top: 12px;
+	color: #eaaa08;
+}#sort-price{
+	float:right;
+	margin-left: 10px;
+	padding-top: 12px;
+	color: #eaaa08;
+}#sort-price:hover{
+	text-decoration: underline;
+}#sort-time:hover{
+	text-decoration: underline;
+}.issues-area h3{
+	float: left;
+	color: #eaaa08;
+	font-size: 18pt;
+} hr {
+	width: 100%;
+}
+
+.psummary {
+	color: #555;
+	padding-top: 2px;
+	font-size: 10pt;
 }
 
 .ptime {

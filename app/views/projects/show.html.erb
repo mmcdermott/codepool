@@ -12,16 +12,16 @@
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
 				<%= link_to(@project.link, @project.link) %></br></br>
 				
-				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue.%20http%3A%2F%2Fcodepool.org%2FISSUE%2FPATH" > <img src="/assets/twitter.png"> </a>
+				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue" > <img src="/assets/twitter.png"> </a>
 				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
 				</br></br>
 				<h3>Submit a Result </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
-				<a href="#" class="btn small primary" >Pledge</a>
+				<a href="<%= "/projects/#{@project.id}/pre_submit" %>" class="btn small primary">Submit</a>
 			</div>
 			<div class="span3">
 			<h3> Current Bounty</h3>
-			<h1><%= @project.price %> </h1>
+			<h1><%= "$ " + @project.price.to_s() %> </h1>
 			
 			<a href="#" class="btn large primary" id="pledge-button">Submit Code</a>
 			</div>
@@ -87,3 +87,4 @@
 	</div>
 
 </div>
+

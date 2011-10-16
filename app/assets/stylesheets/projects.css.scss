@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#new_project {
+    label {
+        width:150px;
+        margin-right:1em;
+    }
+    input[type=text], textarea {
+      width:650px;
+    }
+    input[type=submit] {
+      margin-left:14px;
+    }
+}
+
 #stripe-form {
   #creditCardFields {
     div {
@@ -12,10 +25,7 @@
       margin-right:1em;
       width:200px;
     }
-  }
-  fieldset {
     display:none;
-    
   }
 }
 

@@ -13,7 +13,7 @@ Codepool::Application.routes.draw do
   end
   resources :sessions, :only => [:new, :create, :destroy]
   
-  match '/pre_submit', :to => 'users#pre_submit'
+  match '/submission', :to => 'users#pre_submit'
 
   match '/sign_up',  :to => 'users#new'
   match '/sign_in',  :to => 'sessions#new'
@@ -23,6 +23,7 @@ Codepool::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/faq',     :to => 'pages#faq'
   match '/contact', :to => 'pages#contact'
+  match '/thank_you', :to => 'pages#thank_you'
 
 
 
