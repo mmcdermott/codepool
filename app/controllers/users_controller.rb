@@ -142,8 +142,8 @@ class UsersController < ApplicationController
   def pre_submit
     @user = current_user
     @project = Project.find(params[:user][:pid])
+    Mailer.submission_confirmation(@user,@projest).deliver
     redirect_to @user
-    
   end
     
 
