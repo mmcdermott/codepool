@@ -23,7 +23,9 @@
 					<h1><%= "$ " + @project.price.to_s() %> </h1>
 					
 					</div>
-			
+          <% if @current_user.nil? %>
+            <!--Must be logged in to pledge-->
+          <% else %>
 						<form id="stripe-form" method="post" action='/submit_pledge'>
 						  <fieldset id="pledgeBox">
 						    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
@@ -54,7 +56,8 @@
 
 
 						  </fieldset>
-						</form>			
+						</form>
+          <% end %>
 		</div>
 	</div>
 </div>
