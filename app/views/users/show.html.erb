@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if params['created'] %>
+  <h2>Welcome to codepool!</h2>
+<% end %>
+
 <p>
   <b>Name:</b>
   <%= @user.name %>
@@ -8,11 +12,6 @@
 <p>
   <b>Email:</b>
   <%= @user.email %>
-</p>
-
-<p>
-  <b>Stripe Token:</b>
-  <%= @user.stripe_token %>
 </p>
 
 
