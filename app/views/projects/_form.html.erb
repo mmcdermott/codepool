@@ -3,7 +3,6 @@
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
       <% @project.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -24,9 +23,12 @@
     <label for="project_description">Description</label>
     <textarea id="project_description" name="project[description]" rows="10"></textarea>
   </div>
-
   <div class="field">
-    <label for="project_IssueLink">Original Issue Link</label>
+    <label for="project_community">Project Community</label>
+    <input id="project_community" name="project[community]" size="30 type="text" />
+  </div>
+  <div class="field">
+    <label for="project_original_issue">Original Issue Link</label>
     <input id="project_original_issue" name="project[original_issue]" size="30" type="text" />
   </div>
   <div class="field">
