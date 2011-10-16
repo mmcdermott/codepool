@@ -11,10 +11,7 @@ class User < ActiveRecord::Base
   validates :email,     :presence     => true,
                         :format       => {:with => email_regex},
                         :uniqueness   => {:case_sensitive => false}
-  validates :password,  :presence     => true,
-                        :confirmation => true,
-                        :length       => { :within => 6..40 }
-
+                        
   before_save :encrypt_password
 
   # Return true if the user's password matches the submitted password.

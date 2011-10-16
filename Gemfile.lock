@@ -93,10 +93,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-<<<<<<< HEAD
-=======
     rubyzip (0.9.4)
->>>>>>> 1187ae8d56f40a56c75e6b493b10beed0cd3fe90
     sass (3.1.10)
     sass-rails (3.1.4)
       actionpack (~> 3.1.0)
@@ -109,13 +106,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.4)
-<<<<<<< HEAD
     stripe (1.5.20)
       rest-client
-=======
     term-ansicolor (1.0.7)
     therubyracer-heroku (0.8.1.pre3)
->>>>>>> 1187ae8d56f40a56c75e6b493b10beed0cd3fe90
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -140,10 +134,7 @@ DEPENDENCIES
   rails (= 3.1.1)
   sass-rails (~> 3.1.4)
   sqlite3
-<<<<<<< HEAD
   stripe
-=======
   therubyracer-heroku (= 0.8.1.pre3)
->>>>>>> 1187ae8d56f40a56c75e6b493b10beed0cd3fe90
   turn
   uglifier (>= 1.0.3)
