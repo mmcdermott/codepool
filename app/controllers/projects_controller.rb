@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    flash[:project_id]=params[:id]
+    @user = current_user
     @donation = Donation.new
     respond_to do |format|
       format.html # show.html.erb

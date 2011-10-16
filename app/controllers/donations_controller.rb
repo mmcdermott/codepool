@@ -8,12 +8,22 @@ class DonationsController < ApplicationController
   end
   
   def create
-    price = params[:donation][:price]
-    @project = Project.find(flash[:project_id])
-    project_id = @project.id
-    user_id = 1 #(current_user).id
-    @donation = Donation.new( :project_id => project_id, :user_id => user_id, :amount => price)
-    redirect_to project_path(@project)
+    @donation = Donation.new(params[:donation])
+    project = @donation.project
+    if @donation.save
+      unless project.nil?
+        project.price += @donation.amount
+        project.save
+      end
+      redirect_to project
+    else
+      flash[:error] = "Didn't save" 
+      if project.nil?
+        redirect_to root_url
+      else 
+        redirect_to project
+      end
+    end
   end
 
   def destroy
