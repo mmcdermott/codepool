@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-
+  before_filter :authenticate, :only => [:new]
+  
   # GET /projects
   # GET /projects.json
   def index
@@ -82,4 +83,10 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+
+    def authenticate
+      deny_access unless signed_in?
+    end
 end

@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :authenticate, :only => [create]
   
   def new
   end
@@ -30,5 +31,9 @@ class DonationsController < ApplicationController
 
   end
   
-  
+  private
+    
+    def authenticate
+      deny_access unless signed_in?
+    end
 end
