@@ -56,9 +56,9 @@
 	    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
 	    <input type="hidden" id="project-id" name="pid" value="<%= @project.id %>">
 	    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
+      <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
 	    <label for="stripe-pledgeAmount">Donate:  </label>
 	    <input type='text' id='stripe-pledgeAmount' name='pledge_amount' value='' >
-	    <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
 	    <input type='submit' id='stripe-submitPledge' value='Submit Pledge' class="btn primary"/>
 	  </fieldset>
 	  <fieldset id="creditCardFields">
@@ -79,8 +79,6 @@
       <div class="actions">
         <button id="stripe-submit" class='btn primary'>Submit</button>
       </div>
-
-
 	  </fieldset>
 	</form>
 	<% end %>
