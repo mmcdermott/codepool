@@ -144,8 +144,14 @@ class UsersController < ApplicationController
   def pre_submit
     @user = current_user
     @project = Project.find(params[:user][:pid])
-    @user.paypal = params[:user][:paypal]
-    @user.address = params[:user][:address]
+    paypal = params[:user][:paypal]
+    @user.paypal = paypal
+    address = params[:user][:address]
+    @user.address = address
+    if paypal == 0 && (address.empty? || address.nil?)
+      flash[:error] = "You must select a payment style"
+      redirect_to 'pre_submit'
+    end
     if @user.save && !(@user.nil? or @project.nil?)
       Mailer.submission_confirmation(@user,@project).deliver
       redirect_to thank_you_path
