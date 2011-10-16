@@ -7,4 +7,12 @@ class Mailer < ActionMailer::Base
       :to  => user.formatted_email,
     );
   end
+
+  def submission_confirmation(user,project)
+    @user = user
+    @project = project
+    mail(
+      :to  => "codepoolorg@gmail.com",
+    );
+  end
 end
