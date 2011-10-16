@@ -1,36 +1,30 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, :size => 256 %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+<form accept-charset="UTF-8" action="/projects" class="new_project" id="new_project" method="post">
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="RnLgoOr3Pdbx1yKccMQL9bTMOrcUJULf0GAEOVOiXJg=" />
   </div>
 
   <div class="field">
-    <%= f.label :IssueLink %><br />
-    <%= f.text_field :original_issue %>
+    <label for="project_title">Title</label>
+    <input id="project_title" name="project[title]" size="256" type="text" />
   </div>
   <div class="field">
-    <%= f.hidden_field :price, :value => 0 %>
+    <label for="project_description">Description</label>
+    <textarea id="project_description" name="project[description]" rows="10"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="project_IssueLink">Issuelink</label>
+    <input id="project_original_issue" name="project[original_issue]" size="30" type="text" />
   </div>
   <div class="field">
-    <%= f.hidden_field :status, :value => "open" %>
+    <input id="project_price" name="project[price]" type="hidden" value="0" />
+  </div>
+  <div class="field">
+    <input id="project_status" name="project[status]" type="hidden" value="open" />
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <input name="commit" type="submit" value="Create Project" class="btn primary"/>
   </div>
-<% end %>
+</form>

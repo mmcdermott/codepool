@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20111016190655) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.string   "link"
     t.string   "original_issue"
+    t.string   "link"
   end
 
   create_table "users", :force => true do |t|

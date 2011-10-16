@@ -62,6 +62,7 @@
 	    <input type='submit' id='stripe-submitPledge' value='Submit Pledge' class="btn primary"/>
 	  </fieldset>
 	  <fieldset id="creditCardFields">
+      <p style='margin-left:11em'>Credit Card data protected by <img src="http://stripe.com/img/logo.png" style="vertical-align: middle;margin-top: -3px;"/></p>
 	    <div>
 	      <label for="stripe-ccNumber">Credit Card Number</label>
 	      <input type="text" id="stripe-ccNumber" value="4242424242424242">
@@ -76,8 +77,8 @@
         <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
 	    </div>
       <p id="stripe-error" class='bad'></p>
+      <button id="stripe-submit" class='btn primary' style="margin-left:200px">Submit Credit Card</button>
       <div class="actions">
-        <button id="stripe-submit" class='btn primary'>Submit</button>
       </div>
 	  </fieldset>
 	</form>

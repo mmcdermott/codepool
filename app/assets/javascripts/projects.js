@@ -20,23 +20,31 @@ var stripe = (function() {
     pid = $('#project-id').val();
     uid = $('#user-id').val();
     spinner = new Spinner();
-    hasToken = $('#user-hasToken').val() === '1';
-    
-    if (hasToken) $('#pledgeBox').fadeIn();
-    else          $('#creditCardFields').fadeIn();
-    
-    $('#stripe-submit').click(function() {
-      $('#stripe-error').text('');
-      $('#stripe-submit').attr('disabled',true);
-      if ($('#stripe-ccNumber').length) {
-        self.processCard();
-        return false
+
+    $('#stripe-form').submit(function(){
+      var hasToken = $('#user-hasToken').val() === '1';
+      if (!hasToken)  {
+        $('#creditCardFields').fadeIn();
+        return false;
       } else {
-        return true
+        return true;
       }
     });
 
+    $('#stripe-submit').click(submitCard);
+
     $('#stripe-submitPledge').click(submitPledge);
+  }
+
+  function submitCard() {
+    $('#stripe-error').text('');
+    $('#stripe-submit').attr('disabled',true);
+    if ($('#stripe-ccNumber').length) {
+      self.processCard();
+      return false
+    } else {
+      return true
+    }
   }
 
   function processCard() {
@@ -55,7 +63,10 @@ var stripe = (function() {
     spinner.stop();
     if (status == 200) {
       $('#stripe-token').val(response.id);
-      $('#creditCardFields').fadeOut(function(){$('#pledgeBox').fadeIn()})
+      $('#user-hasToken').val('1');
+      $('#creditCardFields').fadeOut(function(){
+        $('#stripe-form')[0].submit();
+      })
     } else {
       $('#stripe-error').text(response.error.message);
       $('#stripe-submit').attr('disabled',false);
