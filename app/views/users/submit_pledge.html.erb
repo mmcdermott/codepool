@@ -1,4 +1,7 @@
-foo
-<%= params[:token] %>
-<%= @token %>
-bar
+<div>
+  <h2>Thank you for your pledge!</h2>
+  <p>Be sure to share the following link with developers in your community so that they know they can receive a bounty for fixing this bug.</p>
+  <h3><a href="<%= url_for @project %>"><%= url_for :controller => 'projects', :id => @project.id, :only_path => false %></a></h3>
+  <input type='text' style='width: 100%;font-size: 18px;font-weight: bold;height: 1em;' value='<%= url_for :controller => 'projects', :id => @project.id, :only_path => false %>'/>
+</div>
+
