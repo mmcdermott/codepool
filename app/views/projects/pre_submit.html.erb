@@ -1,6 +1,6 @@
 Please Select your method of payment: 
 
-<%= form_for @user, :url => "/pre_submit" do |f| %>
+<%= form_for @user, :url => "/submission" do |f| %>
   <div class = "field">
     <%= f.hidden_field :pid, :value => @project.id %>
   </div>
@@ -13,12 +13,7 @@ Please Select your method of payment:
     Or would you like us to pay you by check? <br />
     If so, enter your address here:   <%= f.text_field :address %>
   </div>
-  
-  <div class = "field">
-    Any special comments? <br />
-    <%= f.text_area :description %>
-  </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
