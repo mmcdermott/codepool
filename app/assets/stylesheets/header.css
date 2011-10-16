@@ -1,0 +1,18 @@
+#header {
+	background: url(/assets/header-bg.jpg) repeat;
+	height:40px;
+}
+
+#header_image{
+	height:32px;
+	margin-top:3px;
+	float:left;
+}
+
+#header_nav{
+float:right;
+}
+
+#header_search{
+margin-left:21px;
+}
