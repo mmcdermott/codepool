@@ -1,8 +1,12 @@
 Codepool::Application.routes.draw do
   resources :users
 
-  resources :projects
+  root :to => 'projects#index'
+  match	'home',					:to => 'pages#home'
   
+  
+  resources :projects
+   resources :donations 
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'

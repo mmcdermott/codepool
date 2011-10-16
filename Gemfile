@@ -1,11 +1,19 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :production do
+	gem 'pg'
+	 gem 'therubyracer-heroku', '0.8.1.pre3'
+end
+group :development, :test do
+	gem 'sqlite3'
+end
+
 gem 'actionmailer'
 gem 'stripe'
 

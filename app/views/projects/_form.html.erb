@@ -20,8 +20,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <%= f.hidden_field :price, :value => 0 %>
   </div>
   <div class="actions">
     <%= f.submit %>
