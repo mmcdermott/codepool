@@ -32,7 +32,13 @@ Codepool::Application.configure do
   ActionMailer::Base.raise_delivery_errors = true
 
   #send mail with sendmail
-  ActionMailer::Base.delivery_method = :sendmail
-
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :authentication       => :plain,
+    :enable_starttls_auto => true,
+    :user_name            => "codepoolorg+DO-NOT-REPLY@gmail.com",
+    :password             => "teampool"
+  }
 
 end

@@ -58,6 +58,18 @@ Codepool::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  ActionMailer::Base.delivery_method = :sendmail
+
+  ActionMailer::Base.raise_delivery_errors = true
+
+  #send mail with sendmail
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :authentication       => :plain,
+    :enable_starttls_auto => true,
+    :user_name            => "codepoolorg+DO-NOT-REPLY@gmail.com",
+    :password             => "teampool"
+  }
+
 
 end

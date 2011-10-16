@@ -9,7 +9,14 @@
   <%= stylesheet_link_tag    "http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 </head>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <%= render 'layouts/header' %>
 
@@ -24,5 +31,7 @@
 	</div>
 <%= debug(params) if Rails.env.development? %>
 </div>
+
+<%= render 'layouts/footer' %>
 </body>
 </html>

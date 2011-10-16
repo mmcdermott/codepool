@@ -107,7 +107,6 @@ class UsersController < ApplicationController
       if @user.save
         sign_in(@user)
         @mail = Mailer.activation(current_user).deliver
-        @result = @mail.deliver;
         format.html { redirect_to '/' }
         format.json { render json: @user, status: :created, location: @user }
       else
