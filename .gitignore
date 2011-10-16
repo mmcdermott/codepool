@@ -9,3 +9,4 @@ tmp/
 .project
 .DS_Store
 Gemfile.lock
+.idea/*
