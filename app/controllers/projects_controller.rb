@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   # GET /projects
   # GET /projects.json
   def index
@@ -14,7 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-
+    @current_user = current_user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
