@@ -1,6 +1,6 @@
 <div class="row" >
 	<div class="span16">
-		 <h2><%= link_to(@project.title, @project) %></h2>
+		 <h2><%= link_to(@project.title, @project) %></h2><span class="label warning"><%= @project.community.nil? ? "" : "#{@project.community} issue" %></span>
 		<div class="row" id="show-request-1">
 			<div class="span9">
 				<h3>Description</h3>
@@ -15,7 +15,7 @@
 				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
 				</br></br>
 				<h3>Submit a Result </h3>
-				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
+				<p>Solved this issue? Claim your bounty below.</p>
 				<a href="<%= "/projects/#{@project.id}/pre_submit" %>" class="btn small primary">Submit</a>
 			</div>
 			<div class="span4">
