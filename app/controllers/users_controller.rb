@@ -86,6 +86,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_activation
+    @mail = Mailer.activation(current_user)
+    @result = @mail.deliver();
+  end
+
   # POST /users
   # POST /users.json
   def create

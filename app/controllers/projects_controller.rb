@@ -28,6 +28,8 @@ class ProjectsController < ApplicationController
     @current_user = current_user
   end
 
+  
+  
   # GET /projects/new
   # GET /projects/new.json
   def new
