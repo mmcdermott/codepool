@@ -5,13 +5,13 @@ Codepool::Application.routes.draw do
   match	'home',					:to => 'pages#home'
   
   
-  resources :projects
-   resources :donations 
+  resources :projects, :only => [:index, :new, :create, :destroy]
+  resources :donations, :only => [:index]
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+  match '/sign_up',  :to => 'users#new'
+  match '/sign_in',  :to => 'sessions#new'
+  match '/sign_out', :to => 'sessions#destroy'
   match '/submit_pledge', :to => 'users#submit_pledge'
 
   # The priority is based upon order of creation:
