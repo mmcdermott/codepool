@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def formatted_email
-    "#{@name} <#{@email}>"
+    "#{self.name} <#{self.email}>"
   end
 
   def encrypt_password
