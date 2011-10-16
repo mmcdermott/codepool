@@ -185,6 +185,16 @@
 
 .project {
 margin-bottom:0.8em;
+  border: 1px solid #ccc;
+  padding: 1em;
+  background: #fcfff4;
+  background: -moz-linear-gradient(top, #fcfff4 0%, #e9e9ce 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce));
+  background: -webkit-linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
+  background: -o-linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
+  background: -ms-linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=0 );
+  background: linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
 }
 .ptotal {
 	overflow-x: hidden;
@@ -423,7 +433,6 @@ margin-bottom:0.8em;
 	font-weight:bold;
 	font-size:1.3em;
 	font-size:12pt;
-	padding-top: 9px;
 }
 .ptitle:hover {
 	color:#eaaa08;
