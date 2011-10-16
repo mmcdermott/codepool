@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:edit, :update, :submit_pledge]
   
   # GET /users
   # GET /users.json
@@ -32,6 +32,23 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+  
+  def submit
+    @project = Project.find(params[:id])
+    @project.donations.each do |donation|
+      unless donation.nil
+        user = donation.user
+        Stripe::Charge.create(
+          :amount => donation.amount, # in cents
+          :currency => "usd",
+          :customer => user.stripe_token
+        )
+      end
+    end
+    @project.status = "finished"
+    @project.price = 0
+    @project.save
+  end
 
   # GET /users/1/edit
   def edit
@@ -55,11 +72,13 @@ class UsersController < ApplicationController
     end
 
     if (token)  
-      Stripe::Charge.create(
-        :amount => 1000, # in cents
-        :currency => "usd",
-        :customer => token
-      )
+      amount = 1000
+      @donation = Donation.new({:project_id => params[:pid], :user_id => params[:id], :amount => amount})
+      if @donation.save
+        project = Project.find(params[:pid])
+        project.price += @donation.amount
+        project.save
+      end
     end
 
     respond_to do |format|
@@ -76,9 +95,10 @@ class UsersController < ApplicationController
       flash.now[:error] = "password does not match confirmation"
       render "new"
     end
+    password = 
     new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
     @user = User.new(new_hash)
-    
+    @user.encrypt_password
     respond_to do |format|
       if @user.save
         sign_in(@user)
@@ -102,7 +122,7 @@ class UsersController < ApplicationController
       render "new"
     end
     new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
-
+    
     respond_to do |format|
       if @user.update_attributes(new_hash)
         format.html { redirect_to @user, notice: "#{params[:user]}" }

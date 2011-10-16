@@ -5,7 +5,7 @@ Codepool::Application.routes.draw do
   match	'home',					:to => 'pages#home'
   
   
-  resources :projects, :only => [:index, :new, :create, :destroy]
+  resources :projects, :only => [:index, :new, :create, :destroy, :show]
   resources :donations, :only => [:index]
   resources :sessions, :only => [:new, :create, :destroy]
 

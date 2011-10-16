@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015233059) do
+ActiveRecord::Schema.define(:version => 20111016094806) do
 
   create_table "donations", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20111015233059) do
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "users", :force => true do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20111015233059) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.string   "stripe_token"
+    t.boolean  "admin"
   end
 
 end
