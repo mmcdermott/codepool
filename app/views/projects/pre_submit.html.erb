@@ -5,13 +5,18 @@ Please Select your method of payment:
     <%= f.hidden_field :pid, :value => @project.id %>
   </div>
   <div class = "field">
-  Would you like to pay via <%= f.label :paypal %>
-  <%= f.check_box :paypal %>
+    Would you like to be paid via paypal? <br />
+    <%= f.check_box :paypal %>
   </div>
   
   <div class = "field">
-  Or would you like us to pay you by check? 
+    Or would you like us to pay you by check? <br />
     If so, enter your address here:   <%= f.text_field :address %>
+  </div>
+  
+  <div class = "field">
+    Any special comments? <br />
+    <%= f.text_area :description %>
   </div>
   
   <div class="actions">
