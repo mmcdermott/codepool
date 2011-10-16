@@ -48,8 +48,12 @@
         <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe-ccMonth"} %>
         <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
 	    </div>
-	    <button id="stripe-submit" class='btn primary'>Submit</button>
-	    <p id="stripe-error"></p>
+      <p id="stripe-error" class='bad'></p>
+      <div class="actions">
+        <button id="stripe-submit" class='btn primary'>Submit</button>
+      </div>
+
+
 	  </fieldset>
 	</form>
 	<% end %>

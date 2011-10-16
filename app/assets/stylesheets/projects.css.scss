@@ -3,8 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #stripe-form {
+  #creditCardFields {
+    div {
+      clear:both;
+      margin-top:5px;
+    }
+    label {
+      margin-right:1em;
+      width:200px;
+    }
+  }
   fieldset {
     display:none;
+    
   }
 }
 
@@ -21,5 +32,5 @@
 }  
 
 .donate_form {
-  float:left;
+  width:850px;
 }
