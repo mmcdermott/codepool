@@ -1,5 +1,6 @@
 <h1>Sign in</h1>
 
+<p>New user? <%= link_to "Sign up now!", sign_up_path %></p>
 <form accept-charset="UTF-8" action="/sessions" method="post" id='signin'>
   <div class="field">
     <label for="session_email">Email</label>
@@ -14,5 +15,4 @@
   </div>
 </form>
 
-<p>New user? <%= link_to "Sign up now!", sign_up_path %></p>
 
