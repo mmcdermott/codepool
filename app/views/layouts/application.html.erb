@@ -17,11 +17,12 @@
 <body>
 <div class="container">
 	<div id="main-page">
-<% flash.each do |key, value| %>
-  <div class="flash <%= key %>"><%= value %></div>
-<% end %>
-<%= yield %>
+		<% flash.each do |key, value| %>
+		  <div class="flash <%= key %>"><%= value %></div>
+		<% end %>
+		<%= yield %>
+	</div>
 <%= debug(params) if Rails.env.development? %>
-</div></div>
+</div>
 </body>
 </html>

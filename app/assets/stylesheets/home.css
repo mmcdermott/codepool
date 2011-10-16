@@ -178,57 +178,7 @@
 	display: block;
 	min-height: 72px;
 }
-#search {
-	overflow-x: hidden;
-	overflow-y: hidden;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-top-width: 0px;
-	border-right-width: 0px;
-	border-bottom-width: 0px;
-	border-left-width: 0px;
-	border-top-color: rgb(0, 0, 0);
-	border-right-color: rgb(0, 0, 0);
-	border-bottom-color: rgb(0, 0, 0);
-	border-left-color: rgb(0, 0, 0);
-	padding: 5px;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 0px;
-	margin-left: auto;
-	display: block;
-	border-top-left-radius: 27px 27px;
-	-moz-border-radius-topleft: 27px 27px;
-	-o-border-top-left-radius: 27px 27px;
-	-webkit-border-top-left-radius: 27px 27px;
-	border-top-right-radius: 27px 27px;
-	-moz-border-radius-topright: 27px 27px;
-	-o-border-top-right-radius: 27px 27px;
-	-webkit-border-top-right-radius: 27px 27px;
-	border-bottom-right-radius: 27px 27px;
-	-moz-border-radius-bottomright: 27px 27px;
-	-o-border-bottom-right-radius: 27px 27px;
-	-webkit-border-bottom-right-radius: 27px 27px;
-	border-bottom-left-radius: 27px 27px;
-	-moz-border-radius-bottomleft: 27px 27px;
-	-o-border-bottom-left-radius: 27px 27px;
-	-webkit-border-bottom-left-radius: 27px 27px;
-	-webkit-box-shadow: rgb(0, 0, 0) 2px 3px 12px -1px inset;
-	-moz-box-shadow: rgb(0, 0, 0) 2px 3px 12px -1px inset;
-	-o-box-shadow: rgb(0, 0, 0) 2px 3px 12px -1px inset;
-	box-shadow: rgb(0, 0, 0) 2px 3px 12px -1px inset;
-	background-color: rgb(238, 238, 238);
-	opacity: 1;
-	min-height: 30px;
-	
-	width: 650px;
-	float: left;
-	text-align: center;
-	font-size: 28pt;
-	line-height: 1em;
-}
+
 .project {
 	overflow-x: hidden;
 	overflow-y: hidden;
