@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate, :only => [:new]
+  before_filter :authenticate, :only => [:new, :pre_submit]
   
   # GET /projects
   # GET /projects.json
@@ -21,6 +21,11 @@ class ProjectsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @project }
     end
+  end
+  
+  def pre_submit
+    @project = Project.find(params[:id])
+    @current_user = current_user
   end
 
   # GET /projects/new

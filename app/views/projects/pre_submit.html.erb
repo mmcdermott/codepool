@@ -1,0 +1,60 @@
+<div class="row">
+
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <div class="project_pledge_title">
+	    <h1><%= @project.title %></h1>
+	  </div>
+    <div class = "project_pledge_price">
+	    <h1><%= " $#{@project.price}"%></h1>
+	  </div>
+	</p>
+<br />
+	<p>
+    <div class="project_pledge_description">
+  	  <%= @project.description %>
+	  </div>
+	</p>
+
+
+	<div class="donate_form">
+	<% if @current_user.nil? %>
+	  Not logged in
+	<% else %>
+	<form id="stripe-form" method="post" action='/submit_pledge'>
+	  <fieldset id="pledgeBox">
+	    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
+	    <input type="hidden" id="project-id" name="pid" value="<%= @project.id %>">
+	    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
+	    <label for="stripe-pledgeAmount">Donate:  </label>
+	    <input type='text' id='stripe-pledgeAmount' name='pledge_amount' value='' >
+	    <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
+	    <input type='submit' id='stripe-submitPledge' value='Submit Pledge' class="btn primary"/>
+	  </fieldset>
+	  <fieldset id="creditCardFields">
+	    <div>
+	      <label for="stripe-ccNumber">Credit Card Number</label>
+	      <input type="text" id="stripe-ccNumber" value="4242424242424242">
+	    </div>
+	    <div>
+	      <label for="stripe-ccCode">Security Code on Card (CVV)</label>
+	      <input type="text" id="stripe-ccCode" value="123">
+	    </div>
+	    <div>
+        <label for="stripe-ccExpiration">Card Expiration</label>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe-ccMonth"} %>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
+	    </div>
+      <p id="stripe-error" class='bad'></p>
+      <div class="actions">
+        <button id="stripe-submit" class='btn primary'>Submit</button>
+      </div>
+
+
+	  </fieldset>
+	</form>
+	<% end %>
+  </div>
+  Do you have this issue too? Share it now <%= @project.link %>.
+	</div>
