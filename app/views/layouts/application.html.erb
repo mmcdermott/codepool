@@ -4,8 +4,14 @@
   <title>Codepool</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <% stylesheet_link_tag(:all) %>
+ <% javascript_include_tag(:all) %>
   <%= csrf_meta_tags %>
 </head>
+
+<%= render 'layouts/header' %>
+
+
 <body>
 <% flash.each do |key, value| %>
   <div class="flash <%= key %>"><%= value %></div>
