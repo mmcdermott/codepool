@@ -1,16 +1,16 @@
-		
+
 		WebFontConfig = {
-    google: { families: [ 'Nova Square', 'Play' ] }
-  };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
+  google: { families: [ 'Nova Square', 'Play' ] }
+};
+(function() {
+  var wf = document.createElement('script');
+  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+  wf.type = 'text/javascript';
+  wf.async = 'true';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(wf, s);
+})();
 		
 		var cp = (function(){
 			var r = {};
@@ -27,6 +27,7 @@
 					html = '<div class="project" id="projects-'+v.id+'" tag="'+((v.tags)?(v.tags.join(' ')||'').toLowerCase():'none')+'">'
 						+'<div class="ptotal">$'
 						+	v.price
+						//+ '<br/>'+v.created_at
 							+ '<div class="pspec">'
 								+	'<div class="btn success large"><big>'
 								+ 'PLEDGE'
@@ -68,13 +69,12 @@
 			}
 			
 			r.hash = function(hash){
-				//console.log(hash);
 				var proj = $(hash.replace('/','-'));
 				if(!hash || proj.is('.pactive')) return false;
 				scroll = $(document).scrollTop();
 				$(document).scrollTop(0);
-				$(".project").fadeOut();
-				proj.addClass('pactive').stop(true,true).fadeIn().find('.pdetail, .pspec').slideDown();
+				$(".project").hide();
+				proj.addClass('pactive').stop(true,true).show().find('.pdetail, .pspec').show();
 				location.hash = hash;
 			}
 			
@@ -85,7 +85,7 @@
 			var scroll = 0;
 			
 			$.get('/projects?format=json',function(data){
-				//console.log(data);
+				console.log(data);
 				cp.genproj(data);
 			});
 			
@@ -94,8 +94,8 @@
 			});
 			$("#logo, .url-home").live("click",function(e){
 				e.stopPropagation();e.preventDefault();
-				$(".pactive").removeClass('pactive').stop(true,true).fadeIn().find('.pdetail, .pspec').slideUp();
-				$(".project").slideDown(function(){
+				$(".pactive").removeClass('pactive').stop(true,true).show().find('.pdetail, .pspec').hide();
+				$(".project").show(1,function(){
 					$(document).scrollTop(scroll);
 				});
 			});
@@ -104,8 +104,8 @@
 				var val = $(this).val();
 				var selector = '[tag*=' + (val||'').toLowerCase() + ']';
 				console.log(selector);
-				$("#projects").children().filter(selector).fadeIn();
-				$("#projects").children().not(selector).fadeOut();
+				$("#projects").children().filter(selector).show();
+				$("#projects").children().not(selector).hide();
 			}).focus(function(){
 				if($(this).val() == 'search'){
 					$(this).val('');
