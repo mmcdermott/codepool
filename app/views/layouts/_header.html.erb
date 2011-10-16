@@ -1,18 +1,24 @@
 <div class="topbar">
       <div class="topbar-inner">
         <div class="container">
-		<%= link_to image_tag("codepoollogo-sm.png", :id=>"header_image"), root_url %>
+        <%= link_to image_tag("codepoollogo-sm.png", :id=>"header_image"), root_url %>
 
-		<form class="pull-left" action="" id="header_search">
-		<input type="text" placeholder="Search">
-		</form>
-          	<ul class="nav" id="header_nav">
-		    <li class="active"><%= link_to "Issues", root_url %></li>
-	            <li><%= link_to "About", root_url %></li>
-	            <li><%= link_to "contact", root_url %></li>
-		    <li><%= link_to "Login", sign_in_path %></li>
-	
-	          </ul>
-        </div>
+        <form class="pull-left" action="" id="header_search">
+        <input type="text" placeholder="Search">
+        </form>
+        <ul class="nav" id="header_nav">
+          <li class="active"><%= link_to "Issues", root_url %></li>
+          <li><%= link_to "About", '/pages/about' %></li>
+          <li><%= link_to "FAQ", '/pages/faq' %></li>
+          <li><%= link_to "Contact", '/pages/contact' %></li>
+          <li id="profileLink">
+            <% if current_user.nil? %>
+              <%= link_to "Login", sign_in_path %>
+            <% else %>
+              <%= link_to current_user.name, current_user   %>
+            <%end%>
+          </li>
+        </ul>
+      </div>
     </div>
 </div

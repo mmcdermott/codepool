@@ -12,6 +12,11 @@ Codepool::Application.routes.draw do
   match '/sign_in',  :to => 'sessions#new'
   match '/sign_out', :to => 'sessions#destroy'
   match '/submit_pledge', :to => 'users#submit_pledge'
+  match '/pages/about',   :to => 'pages#about'
+  match '/pages/faq',     :to => 'pages#faq'
+  match '/pages/contact', :to => 'pages#contact'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
