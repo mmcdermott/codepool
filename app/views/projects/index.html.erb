@@ -1,18 +1,29 @@
-<div id="evyt13186998178151812">
-</div>
-<div id="codepool">
-	<div id="logo">
-	</div>
-	<div id="cptop">
-		<h1 id="cpname">Code Pool</h1>
-		<div id='cpdetail'>
-			Detailed Description. How to Code Pool.
-		</div>
-	</div>
-	<a href='/users/new' class="btn large" style="float:left;">SIGN UP</a>
-	<a href='/signin' class="btn large" style="float:left;">SIGN IN</a>
-	<a href='/projects/new' id="createproj" class="btn large">NEW</a>
-	<input id="search" value="search">
-</div>
-<div id="projects">
-</div>
+<h1>Listing projects</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.title %></td>
+    <td><%= project.description %></td>
+    <td><%= project.price %></td>
+	<% project.donations.each do |donation| %>
+	<%= donation.user.name %>
+	<% end %>
+    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project', new_project_path %>
