@@ -123,7 +123,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     password = params[:user][:password]
     confirm = params[:user][:password_confirmation]
-    if password != confirm && !password.empty?
+    if password != confirm || !(password.empty? || password.nil?)
       flash.now[:error] = "password does not match confirmation"
       render "new"
     end
@@ -139,6 +139,14 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def pre_submit
+    @user = current_user
+    @project = Project.find(params[:user][:pid])
+    redirect_to @user
+    
+  end
+    
 
   # DELETE /users/1
   # DELETE /users/1.json

@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   
   def pre_submit
     @project = Project.find(params[:id])
-    @current_user = current_user
+    @user = current_user
   end
 
   

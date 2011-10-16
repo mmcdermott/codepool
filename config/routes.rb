@@ -12,15 +12,17 @@ Codepool::Application.routes.draw do
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
+  
+  match '/pre_submit', :to => 'users#pre_submit'
 
   match '/sign_up',  :to => 'users#new'
   match '/sign_in',  :to => 'sessions#new'
   match '/sign_out', :to => 'sessions#destroy'
   match '/submit_pledge', :to => 'users#submit_pledge'
   match '/mail/send_activation', :to => 'users#send_activation'
-  match '/pages/about',   :to => 'pages#about'
-  match '/pages/faq',     :to => 'pages#faq'
-  match '/pages/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/faq',     :to => 'pages#faq'
+  match '/contact', :to => 'pages#contact'
 
 
 
