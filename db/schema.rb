@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20111016190655) do
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
     t.string   "original_issue"
+    t.string   "status"
     t.string   "link"
   end
 
