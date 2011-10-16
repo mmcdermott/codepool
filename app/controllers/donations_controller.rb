@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  before_filter :authenticate, :only => [create]
+  before_filter :authenticate
   
   def new
   
