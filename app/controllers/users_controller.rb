@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   def create
     password = params[:user][:password]
     confirm = params[:user][:password_confirmation]
-    if passowrd != confirm && !password.empty?
+    if password != confirm && !password.empty?
       flash.now[:error] = "password does not match confirmation"
       render "new"
     end
