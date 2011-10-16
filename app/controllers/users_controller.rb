@@ -142,8 +142,12 @@ class UsersController < ApplicationController
   def pre_submit
     @user = current_user
     @project = Project.find(params[:user][:pid])
-    Mailer.submission_confirmation(@user,@projest).deliver
-    redirect_to @user
+    @user.paypal = params[:user][:paypal]
+    @user.address = params[:user][:address]
+    if @user.save && !(@user.nil? or @project.nil?)
+      Mailer.submission_confirmation(@user,@project).deliver
+      redirect_to thank_you_path
+    end
   end
     
 
