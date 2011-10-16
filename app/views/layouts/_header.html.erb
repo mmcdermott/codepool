@@ -11,9 +11,9 @@
         </form>
         <ul class="nav" id="header_nav">
           <li class="active"><%= link_to "Issues", root_url %></li>
-          <li><%= link_to "About", '/pages/about' %></li>
-          <li><%= link_to "FAQ", '/pages/faq' %></li>
-          <li><%= link_to "Contact", '/pages/contact' %></li>
+          <li><%= link_to "About", '/about' %></li>
+          <li><%= link_to "FAQ", '/faq' %></li>
+          <li><%= link_to "Contact", '/contact' %></li>
           <li id="profileLink">
             <% if current_user.nil? %>
               <%= link_to "Login", sign_in_path %>
