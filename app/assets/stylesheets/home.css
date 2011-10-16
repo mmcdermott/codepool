@@ -1,4 +1,4 @@
-			body {
+body {
 	left: 0px;
 	top: 0px;
 	display: block;
@@ -182,7 +182,6 @@
 .project {
 padding-top:0.8em;
 margin-bottom:0.8em;
-min-height: 50px;
 }
 .ptotal {
 	overflow-x: hidden;
@@ -222,7 +221,6 @@ min-height: 50px;
 	display: block;
 	float: left;
 	min-width: 50px;
-	min-height: 30px;
 	b/ackground-color: rgb(102, 161, 19);
 	opacity: 1;
 	-we/bkit-box-shadow: rgb(0, 0, 0) 0px 0px 20px 1px inset;
@@ -274,7 +272,6 @@ min-height: 50px;
 	-o-border-bottom-left-radius: 0px 0px;
 	-webkit-border-bottom-left-radius: 0px 0px;
 	display: block;
-	min-height: 40px;
 }
 #evyt13187003903106132 {
 	overflow-x: hidden;
@@ -422,7 +419,11 @@ min-height: 50px;
 .ptitle {
 	color:#333;
 	font-weight:bold;
-	font-size:1.6em;
+	font-size:1.2em;
+	padding-top: 9px;
+}
+.ptitle:hover {
+	color:#eaaa08;
 }
 .pbrief {
 	font-size: 16pt;
@@ -437,7 +438,7 @@ min-height: 50px;
 .ptotal {
 	font-family: 'Nova Square', sans-serif;
 	font-size:2.1em;
-	color: #ff4444;
+	color: #eaaa08;
 	margin-right:.5em;
 	margin-top:0.05em;
 }

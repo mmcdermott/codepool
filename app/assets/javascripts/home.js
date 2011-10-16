@@ -1,4 +1,3 @@
-
 		WebFontConfig = {
   google: { families: [ 'Nova Square', 'Play' ] }
 };
@@ -15,16 +14,28 @@
 		var cp = (function(){
 			var r = {};
 			
+			r.sortproj = function(b,a){
+				var A = a.price;
+				var B = b.price;
+				if (A < B){
+					return -1;
+				}else if (A > B){
+					return  1;
+				}else{
+					return 0;
+				}
+			}
 			r.genproj = function(projs){
-				var self = this;
-				(projs).forEach(function(v,i){
+				var self = this; projs = projs||[];
+				projs = projs.sort(cp.sortproj);
+				projs.forEach(function(v,i){
 					var html, peeps = [];
 					if(v.pledges){
 						v.pledges.forEach(function(v,i){
 							peeps.push("<span class='pledgesamount'>$"+ v.amount + "</span> ~ "+ v.name);
 						});
 					}
-					html = '<div class="project" id="projects-'+v.id+'" tag="'+((v.tags)?(v.tags.join(' ')||'').toLowerCase():'none')+'">'
+					html = '<div class="project" id="projects-'+v.id+'" tag="'+(v.title.toLowerCase()||((v.tags)?(v.tags.join(' ')||'').toLowerCase():'none'))+'">'
 						+'<div class="ptotal">$'
 						+	v.price
 						//+ '<br/>'+v.created_at
@@ -42,12 +53,13 @@
 							+ '</div>'
 						+'</div>'
 						+'<div class="pbody">'
-						+	'<div class="ptitle"><b><u>'
+						+	'<div class="ptitle"><b><u><a class="ptitle" href="/projects/'+v.id+'">'
 						+		v.title
-						+	'</u></b></div>'
-						+		'<span class="pbrief">'
-					//	+		v.brief
-						+		'</span>'
+						+	'</a></u></b>'
+						/*+		'<span class="ptime"> - '
+						+			(new Date(v.created_at)||new Date()).toDateString()
+						+		'</span>'*/
+						+ '</div>'
 						+	'<div class="pdetail">'
 						+		v.description
 						+	'<div class="pmeta">'
@@ -85,11 +97,11 @@
 			var scroll = 0;
 			
 			$.get('/projects?format=json',function(data){
-				console.log(data);
+				//console.log(data);
 				cp.genproj(data);
 			});
 			
-			$(".project").live("click",function(e){
+			$(".project").live("click",function(e){return true;
 				cp.hash('#'+$(this).attr('id'));
 			});
 			$("#logo, .url-home").live("click",function(e){
