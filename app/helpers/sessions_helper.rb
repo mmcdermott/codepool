@@ -6,7 +6,7 @@ def sign_in(user)
 end
 
 def deny_access
-  redirect_to signin_path, :notice => "Please sign in to access this page."
+  redirect_to sign_in_path, :notice => "Please sign in to access this page."
 end
 
 def sign_out

@@ -57,7 +57,7 @@
 
 	<div class="donate_form">
 	<% if @current_user.nil? %>
-	  Not logged in
+	  Want to help get this bug fixed? Log in to donate now. <br />
 	<% else %>
 	<form id="stripe-form" method="post" action='/submit_pledge'>
 	  <fieldset id="pledgeBox">
@@ -93,7 +93,11 @@
 	</form>
 	<% end %>
   </div>
-  Do you have this issue too? Share it now with <%= @project.link %>.
+  <br />
+  <div class = "share_link">
+    Do you have this issue too? Share it now with 
+    <%= @project.link %>
+  </div>
 	</div>
 
 </div>
