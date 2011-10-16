@@ -23,6 +23,8 @@ class ProjectsController < ApplicationController
     end
   end
 
+  
+  
   # GET /projects/new
   # GET /projects/new.json
   def new

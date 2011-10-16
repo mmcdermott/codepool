@@ -71,8 +71,8 @@ class UsersController < ApplicationController
       end
     end
 
-    if (token)
-      amount = 1000
+    if (token)  
+      amount = params[:pledge_amount]
       @donation = Donation.new({:project_id => params[:pid], :user_id => params[:id], :amount => amount})
       if @donation.save
         project = Project.find(params[:pid])

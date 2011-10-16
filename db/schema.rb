@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(:version => 20111016094806) do
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "original_issue"
     t.string   "status"
+
   end
 
   create_table "users", :force => true do |t|

@@ -3,6 +3,9 @@
         <div class="container">
         <%= link_to image_tag("codepoollogo-sm.png", :id=>"header_image"), root_url %>
 
+		
+      
+       
         <form class="pull-left" action="" id="header_search">
         <input type="text" placeholder="Search">
         </form>
@@ -14,8 +17,9 @@
           <li id="profileLink">
             <% if current_user.nil? %>
               <%= link_to "Login", sign_in_path %>
+ 	      <li><%= link_to "Register", sign_up_path %></li>
             <% else %>
-              <%= link_to current_user.name, current_user   %>
+              <%= link_to "Sign Out", sign_out_path   %>
             <%end%>
           </li>
         </ul>
