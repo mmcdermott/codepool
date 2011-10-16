@@ -52,14 +52,13 @@ class UsersController < ApplicationController
       end
     end
 
-  @token = token
-# charge the Customer instead of the card
-#Stripe::Charge.create(
-#    :amount => 1000, # in cents
-#    :currency => "usd",
-#    :customer => customer.id
-#)
-
+    if (token)  
+      Stripe::Charge.create(
+        :amount => 1000, # in cents
+        :currency => "usd",
+        :customer => token
+      )
+    end
 
     respond_to do |format|
       format.html 
