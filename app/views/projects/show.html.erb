@@ -1,4 +1,28 @@
 <div class="row">
+	<div class="span11">
+		<h2><%= @project.title %></h2>
+		<div class="row">
+			<div class="span8">
+				<h3>Description</h3>
+				<p><%= @project.description %></p>
+				</br>
+				<h4>Original Issue</h4>	
+			
+				<h3>Share This Issue </h3>
+				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
+			</div>
+			<div class="span3">
+			<h3> Current Bounty</h3>
+			<h1>$345 </h1>
+			<a href="#" class="btn large primary">Pledge Moneys</a>
+			</div>
+		</div>
+	</div>
+	<div class="span5">
+	</div>
+</div>
+	
+<div class="row">
 <div class="span6">
 		<p id="notice"><%= notice %></p>
 
@@ -58,61 +82,7 @@
 
 <div class="span10">
 
-	<p id="notice"><%= notice %></p>
 
-	<p>
-	  <b>Title:</b>
-	  <%= @project.title %>
-	</p>
-
-	<p>
-	  <b>Description:</b>
-	  <%= @project.description %>
-	</p>
-
-	<p>
-	  <b>Price:</b>
-	  <%= @project.price %>
-	</p>
-
-
-	<% if @current_user.nil? %>
-	  Not logged in
-	<% else %>
-	<form id="stripe-form" method="post" action='/submit_pledge'>
-	  <fieldset id="pledgeBox">
-	    <label for='pledgeAmount'>
-	    <input type="text" id="user-id" name="id" value="<%= @current_user.id %>">
-	    <input type="text" id="project-id" name="pid" value="<%= @project.id %>">
-	    <input type="text" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
-	    <input type='text' id='stripe-pledgeAmount' value='200' >
-	    <input type="text" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
-	    <input type='submit' id='stripe-submitPledge' value='Submit Pledge'/>
-	  </fieldset>
-	  <fieldset id="creditCardFields">
-	    <div>
-	      <label for="stripe-ccNumber">Credit Card Number</label>
-	      <input type="text" id="stripe-ccNumber" value="4242424242424242">
-	    </div>
-	    <div>
-	      <label for="stripe-ccCode">Security Code on Card (CVV)</label>
-	      <input type="text" id="stripe-ccCode" value="123">
-	    </div>
-	    <div>
-	      <label for="stripe-ccExpiration">Card Expiration</label>
-	      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe-ccMonth"} %>
-	      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
-	    </div>
-	    <button id="stripe-submit">Submit</button>
-	    <p id="stripe-error"></p>
-	  </fieldset>
-	</form>
-	<% end %>
-
-	<%= link_to 'Edit', edit_project_path(@project) %> |
-	<%= link_to 'Back', projects_path %>
-
-	</div>
 
 </div>
 </div>
