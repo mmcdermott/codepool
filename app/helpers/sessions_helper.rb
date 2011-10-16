@@ -5,6 +5,10 @@ def sign_in(user)
   self.current_user = user
 end
 
+def deny_access
+  redirect_to signin_path, :notice => "Please sign in to access this page."
+end
+
 def sign_out
   cookies.delete(:remember_token)
   self.current_user = nil

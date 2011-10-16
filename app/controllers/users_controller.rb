@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update, :submit_pledge]
+
   # GET /users
   # GET /users.json
   def index
@@ -31,6 +33,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def submit
+    @project = Project.find(params[:id])
+    @project.donations.each do |donation|
+      unless donation.nil
+        user = donation.user
+        Stripe::Charge.create(
+          :amount => donation.amount, # in cents
+          :currency => "usd",
+          :customer => user.stripe_token
+        )
+      end
+    end
+    @project.status = "finished"
+    @project.price = 0
+    @project.save
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
@@ -41,7 +60,7 @@ class UsersController < ApplicationController
     email = @user.email
     token = @user.stripe_token
 
-    if (token.nil? || token.empty?) 
+    if (token.nil? || token.empty?)
       if (params[:token])
         customer = Stripe::Customer.create(
           :card => params[:token],
@@ -53,15 +72,17 @@ class UsersController < ApplicationController
     end
 
     if (token)  
-      Stripe::Charge.create(
-        :amount => 1000, # in cents
-        :currency => "usd",
-        :customer => token
-      )
+      amount = params[:pledge_amount]
+      @donation = Donation.new({:project_id => params[:pid], :user_id => params[:id], :amount => amount})
+      if @donation.save
+        project = Project.find(params[:pid])
+        project.price += @donation.amount
+        project.save
+      end
     end
 
     respond_to do |format|
-      format.html 
+      format.html
     end
   end
 
@@ -74,13 +95,14 @@ class UsersController < ApplicationController
       flash.now[:error] = "password does not match confirmation"
       render "new"
     end
+    password =
     new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
     @user = User.new(new_hash)
-    
+    @user.encrypt_password
     respond_to do |format|
       if @user.save
         sign_in(@user)
-        format.html { redirect_to @user, success: 'Welcome to CodePool!' }
+        format.html { redirect_to '/' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -123,4 +145,10 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+    def authenticate
+      deny_access unless signed_in?
+    end
 end

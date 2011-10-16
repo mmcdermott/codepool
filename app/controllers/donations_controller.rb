@@ -1,12 +1,15 @@
 class DonationsController < ApplicationController
+  before_filter :authenticate, :only => [create]
   
   def new
+  
   end
-
+  
   def index
     @donations = Donation.all
   end
   
+    
   def create
     @donation = Donation.new(params[:donation])
     project = @donation.project
@@ -29,6 +32,10 @@ class DonationsController < ApplicationController
   def destroy
 
   end
-  
-  
+
+  private
+    
+    def authenticate
+      deny_access unless signed_in?
+    end
 end

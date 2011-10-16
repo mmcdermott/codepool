@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation, :stripe_token
+  attr_accessible :name, :email, :password, :password_confirmation
 
   has_many :donations 
   has_many :projects, :through => :donations
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 #                       :confirmation => true,
 #                       :length       => { :within => 6..40 }
 
-  before_save :encrypt_password
+#  before_save :encrypt_password
 
   # Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)
@@ -45,12 +45,13 @@ class User < ActiveRecord::Base
     "#{@name} <#{@email}>"
   end
 
-  private
+  def encrypt_password
+    self.salt = make_salt unless has_password?(password)
+    self.encrypted_password = encrypt(password)
+  end
 
-    def encrypt_password
-      self.salt = make_salt unless has_password?(password)
-      self.encrypted_password = encrypt(password)
-    end
+
+  private
 
     def encrypt(string)
       secure_hash("#{salt}--#{string}")

@@ -16,3 +16,9 @@ float:right;
 #header_search{
 margin-left:21px;
 }
+
+#profileLink a {
+  color:#E4A609;
+  font-weight: bold;
+}
+
