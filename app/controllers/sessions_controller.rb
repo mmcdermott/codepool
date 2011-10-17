@@ -10,7 +10,7 @@ def create
   unless user.nil?
     flash[:success] = "LogIn successfull"
     sign_in user
-    redirect_to user
+    redirect_to root_path
   else
     flash.now[:error] = "Email/Password combination don't match"
     render 'new'
