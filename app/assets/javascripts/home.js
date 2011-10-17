@@ -154,7 +154,7 @@ WebFontConfig = {
 				$("#search").live('keyup',function(e){
 					var val = $(this).val();
 					var selector = '[tag*=' + (val||'').toLowerCase() + ']';
-					console.log(selector);
+					//console.log(selector);
 					$("#projects").children().filter(selector).show();
 					$("#projects").children().not(selector).hide();
 				}).focus(function(){
