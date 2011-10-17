@@ -23,7 +23,7 @@
 					<h3> Current Bounty</h3>
 					<h1><%= "$ " + @project.price.to_s() %> </h1>
 					
-					</div>
+					
           <% if @current_user.nil? %>
             <!--Must be logged in to pledge-->
           <% else %>
@@ -59,6 +59,7 @@
 						  </fieldset>
 						</form>
           <% end %>
+			</div>
 		</div>
 	</div>
 </div>
