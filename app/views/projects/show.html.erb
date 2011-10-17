@@ -3,16 +3,15 @@
 		 <h2><%= link_to(@project.title, @project) %></h2>
 		 <%= @project.community.nil? ? "" : "<span class='label warning'>#{@project.community} issue</span>" %>
 		<div class="row" id="show-request-1">
-			<div class="span8">
+			<div class="span9">
 				<h3>Description</h3>
-				<p><%= @project.description %></p>
+				<p><%= @project.description.gsub(/\n/, '<br>') %></p>
 				</br>
 				<h4>Original Issue</h4>	
 				<%= link_to @project.original_issue, @project.original_issue %>
 				<h3>Share This Issue </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
-				<%= link_to(@project.link, @project.link) %></br></br>
-				
+				<%= link_to(request.url, request.url) %></br></br>
 				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue" > <img src="/assets/twitter.png"> </a>
 				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
 				</br></br>
@@ -20,72 +19,47 @@
 				<p>Solved this issue? Claim your bounty below.</p>
 				<a href="<%= "/projects/#{@project.id}/pre_submit" %>" class="btn small primary">Submit</a>
 			</div>
-			<div class="span3">
-			<h3> Current Bounty</h3>
-			<h1><%= "$ " + @project.price.to_s() %> </h1>
-			
-			<a href="#" class="btn large primary" id="pledge-button">Submit Code</a>
-			</div>
+			<div class="span4">
+					<h3> Current Bounty</h3>
+					<h1><%= "$ " + @project.price.to_s() %> </h1>
+					
+					</div>
+          <% if @current_user.nil? %>
+            <!--Must be logged in to pledge-->
+          <% else %>
+						<form id="stripe-form" method="post" action='/submit_pledge'>
+						  <fieldset id="pledgeBox">
+						    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
+						    <input type="hidden" id="project-id" name="pid" value="<%= @project.id %>">
+						    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
+						    <input type='text' id='stripe-pledgeAmount' name='pledge_amount' value='' >
+						    <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
+						    <input type='submit' id='stripe-submitPledge' value='Contribute to Bounty' class="btn primary"/>
+						  </fieldset>
+						  <fieldset id="creditCardFields">
+						    <div>
+						      <label for="stripe-ccNumber">Credit Card Number</label>
+						      <input type="text" id="stripe-ccNumber" value="">
+						    </div>
+						    <div>
+						      <label for="stripe-ccCode">Security Code on Card (CVV)</label>
+						      <input type="text" id="stripe-ccCode" value="">
+						    </div>
+						    <div>
+					        <label for="stripe-ccExpiration">Card Expiration</label>
+					        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe-ccMonth"} %>
+					        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
+						    </div>
+					      <p id="stripe-error" class='bad'></p>
+					      <div class="actions">
+					        <button id="stripe-submit" class='btn primary'>Submit</button>
+					      </div>
+
+
+						  </fieldset>
+						</form>
+          <% end %>
 		</div>
-		
-		
-		
-		<div class="row" id="show-request-2">
-
-			<p id="notice"><%= notice %></p>
-
-
-		<br />
-
-
-
-			<div class="donate_form">
-			<% if @current_user.nil? %>
-			  Not logged in
-			<% else %>
-			<form id="stripe-form" method="post" action='/submit_pledge'>
-			  <fieldset id="pledgeBox">
-			    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
-			    <input type="hidden" id="project-id" name="pid" value="<%= @project.id %>">
-			    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
-			    <label for="stripe-pledgeAmount">Donate:  </label>
-			    <input type='text' id='stripe-pledgeAmount' name='pledge_amount' value='' >
-			    <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">
-			    <input type='submit' id='stripe-submitPledge' value='Submit Pledge' class="btn primary"/>
-			  </fieldset>
-			  <fieldset id="creditCardFields">
-			    <div>
-			      <label for="stripe-ccNumber">Credit Card Number</label>
-			      <input type="text" id="stripe-ccNumber" value="4242424242424242">
-			    </div>
-			    <div>
-			      <label for="stripe-ccCode">Security Code on Card (CVV)</label>
-			      <input type="text" id="stripe-ccCode" value="123">
-			    </div>
-			    <div>
-		        <label for="stripe-ccExpiration">Card Expiration</label>
-		        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe-ccMonth"} %>
-		        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe-ccYear"} %>
-			    </div>
-		      <p id="stripe-error" class='bad'></p>
-		      <div class="actions">
-		        <button id="stripe-submit" class='btn primary'>Submit</button>
-		      </div>
-
-
-			  </fieldset>
-			</form>
-			<% end %>
-		  </div>
-		</div>
-
-
-
-
-
-
-
 	</div>
-
 </div>
 
