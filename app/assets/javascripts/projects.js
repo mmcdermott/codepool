@@ -22,6 +22,7 @@ var stripe = (function() {
     spinner = new Spinner();
 
     $('#stripe-form').submit(function(){
+      if ($('#stripe-pledgeAmount').val() > 0) return false;
       var hasToken = $('#user-hasToken').val() === '1';
       if (!hasToken)  {
         $('#creditCardFields').fadeIn();
@@ -65,7 +66,7 @@ var stripe = (function() {
       $('#stripe-token').val(response.id);
       $('#user-hasToken').val('1');
       $('#creditCardFields').fadeOut(function(){
-        $('#stripe-form')[0].submit();
+         $('#stripe-form')[0].submit();
       })
     } else {
       $('#stripe-error').text(response.error.message);
