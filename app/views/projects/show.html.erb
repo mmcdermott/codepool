@@ -7,7 +7,7 @@
 		<div class="row" id="show-request-1">
 			<div class="span9">
 				<h3>Description</h3>
-				<p><%= @project.description.gsub(/\n/, '<br>') %></p>
+				<p><%= simple_format @project.description %></p>
 				</br>
 				<h4>Original Issue</h4>	
 				<%= link_to @project.original_issue, @project.original_issue %>
@@ -25,7 +25,7 @@
 					<h3> Current Bounty</h3>
 					<h1><%= "$ " + @project.price.to_s() %> </h1>
 					
-					</div>
+					
           <% if @current_user.nil? %>
             <!--Must be logged in to pledge-->
           <% else %>
@@ -61,6 +61,7 @@
 						  </fieldset>
 						</form>
           <% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -195,7 +195,7 @@ margin-bottom:0.8em;
   background: -ms-linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=0 );
   background: linear-gradient(top, #fcfff4 0%,#e9e9ce 100%);
-
+	min-width:200px;
 }
 .project:hover {
   margin-bottom:0.8em;
