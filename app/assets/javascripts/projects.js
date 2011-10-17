@@ -22,7 +22,7 @@ var stripe = (function() {
     spinner = new Spinner();
 
     $('#stripe-form').submit(function(){
-      if ($('#stripe-pledgeAmount').val() > 0) return false;
+      if (!($('#stripe-pledgeAmount').val() > 0)) return false;
       var hasToken = $('#user-hasToken').val() === '1';
       if (!hasToken)  {
         $('#creditCardFields').fadeIn();
