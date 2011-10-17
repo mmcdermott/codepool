@@ -1,6 +1,7 @@
 <div class="row" >
 	<div class="span16">
-		 <h2><%= link_to(@project.title, @project) %></h2><span class="label warning"><%= @project.community.nil? ? "" : "#{@project.community} issue" %></span>
+		 <h2><%= link_to(@project.title, @project) %></h2>
+		 <%= @project.community.nil? ? "" : "<span class='label warning'>#{@project.community} issue</span>" %>
 		<div class="row" id="show-request-1">
 			<div class="span9">
 				<h3>Description</h3>
