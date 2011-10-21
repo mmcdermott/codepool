@@ -12,9 +12,9 @@
           <a href="<%= url_for project %>">
             <div class="project">
               <h3 class="title"><%= project.title %></h3>
-              <span class="creationTime" data-seconds="<%= project.created_at.strftime('%s') %>"><%= project.created_at.strftime('%a, %b %d %Y') %></span>
+              <span class="creationTime" data-seconds="<%= project.created_at.strftime('%s') %>"> - <%= project.created_at.strftime('%a, %b %d %Y') %></span>
               <span class="pledgeTotal">$<%= '%d' % project.price %></span>
-              <p class='description'><%= simple_format project.description[0,200]+ '...' if project.description.length > 200%></p>
+              <p class='description'><%= simple_format project.description[0,125]+ '...' if project.description.length > 125%></p>
             </div>
           </a>
         </li>

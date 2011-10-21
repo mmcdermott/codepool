@@ -31,6 +31,7 @@
     border: 1px solid #ccc;
     padding: 1em;
     min-width:400px;
+    min-height:4em;
     &:hover {
       @include gradient(#fcfff4,#f2f2d7);
       cursor:pointer;
