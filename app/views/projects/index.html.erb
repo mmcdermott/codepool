@@ -14,7 +14,7 @@
               <h3 class="title"><%= project.title %></h3>
               <span class="creationTime" data-seconds="<%= project.created_at.strftime('%s') %>"><%= project.created_at.strftime('%a, %b %d %Y') %></span>
               <span class="pledgeTotal">$<%= '%d' % project.price %></span>
-              <p class='description'><%= project.description %></p>
+              <p class='description'><%= simple_format project.description[0,200]+ '...' if project.description.length > 200%></p>
             </div>
           </a>
         </li>
