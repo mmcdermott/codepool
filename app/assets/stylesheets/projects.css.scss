@@ -44,14 +44,19 @@
     .title {
       color: #333;
       font-weight: bold;
-      font-size: 120%;
-      line-height:1em;
+      font-size: 16px;
+      line-height:17px;
       display:inline-block;
       text-decoration:underline;
+      max-width: 480px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .creationTime {
       font-family:monospace;
       font-size:90%;
+      vertical-align:top;
     }
     .pledgeTotal {
       font-family: monospace;
