@@ -1,6 +1,69 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.css.scss';
+
+#project-header {
+  padding:.5em 0;
+  margin-bottom:1em;
+  border-bottom:1px solid #555;
+  h3 {
+    color: #eaaa08;
+    font-size: 18pt;
+    display:inline;
+  }
+}
+
+#projects {
+  margin :0;
+  li {
+    list-style-type:none;
+  }
+  a {
+    text-decoration:inherit;
+    font-size:inherit;
+    font-weight:inherit;
+    color:inherit;
+  }
+  .project {
+    @include gradient(#fcfff4,#e9e9ce);
+    margin-bottom:0.8em;
+    border: 1px solid #ccc;
+    padding: 1em;
+    min-width:400px;
+    &:hover {
+      @include gradient(#fcfff4,#f2f2d7);
+      cursor:pointer;
+
+      .title {
+        color:#eaaa08;
+      }
+    }
+
+    .title {
+      color: #333;
+      font-weight: bold;
+      font-size: 120%;
+      line-height:1em;
+      display:inline-block;
+      text-decoration:underline;
+    }
+    .creationTime {
+      font-family:monospace;
+      font-size:90%;
+    }
+    .pledgeTotal {
+      font-family: monospace;
+      font-size: 2.1em;
+      color: #EAAA08;
+      text-aligh:right;
+      margin-right: .5em;
+      margin-top: .5em;
+      float: right;
+    }
+
+  }
+}
 
 #new_project {
     label {

@@ -1,29 +1,29 @@
-<h1>Listing projects</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.title %></td>
-    <td><%= project.description %></td>
-    <td><%= project.price %></td>
-	<% project.donations.each do |donation| %>
-	<%= donation.user.name %>
-	<% end %>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+<div class="row">
+	<div class="span11 issues-area">
+    <div id="project-header">
+      <h3> Crowdfunding Open Source! </h3>
+      <div id="sort-time"> Most Recent </div>
+      <div id="sort-price"> Largest Rewards </div>
+    </div>
+    <ol id="projects">
+      <% @projects.each do |project| %>
+        <li>
+          <a href="<%= url_for project %>">
+            <div class="project">
+              <h3 class="title"><%= project.title %></h3>
+              <span class="creationTime" data-seconds="<%= project.created_at.strftime('%s') %>"><%= project.created_at.strftime('%a, %b %d %Y') %></span>
+              <span class="pledgeTotal">$<%= '%d' % project.price %></span>
+              <p class='description'><%= project.description %></p>
+            </div>
+          </a>
+        </li>
+      <% end %>
+    </ol>
+	</div>
+		<div class="span5">
+			<h3> Codepool is Here to Help You </h3>
+			Codepool allows developers to finish projects faster by posting bounties for their most urgent issues.  Creating a request only takes a minute, so create an account now.</p>
+			<%= link_to "Create Request", new_project_path, :class=>"btn large primary"   %>
+		</div>
+</div>
