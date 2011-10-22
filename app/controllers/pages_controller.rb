@@ -22,10 +22,12 @@ class PagesController < ApplicationController
   def thank_you
   end
 
+  def thanks
+  end
   private
   def resolve_layout 
     case action_name
-      when "landing"
+      when "landing", "thanks"
         "landing"
       else
         "application"
