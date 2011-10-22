@@ -1,7 +1,6 @@
 Codepool::Application.routes.draw do
   resources :users
 
-  root :to => 'pages#landing'
   match	'home',					:to => 'pages#home'
   match	'home2',					:to => 'pages#home2'
   match	'landing',					:to => 'pages#landing'
