@@ -5,4 +5,7 @@ class Project < ActiveRecord::Base
   validates :title, :presence => true
   validates :original_issue, :presence => true
   validates :community, :presence => true
+  
+  scope :active, :conditions => {:status => "open"}
+
 end
