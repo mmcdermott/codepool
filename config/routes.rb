@@ -5,6 +5,7 @@ Codepool::Application.routes.draw do
   match	'home',					:to => 'pages#home'
   match	'home2',					:to => 'pages#home2'
   match	'landing',					:to => 'pages#landing'
+  match	'thanks',					:to => 'pages#thanks'
   
   resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit]
   resources :projects do

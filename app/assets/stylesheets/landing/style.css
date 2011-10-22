@@ -231,6 +231,7 @@ if needed, to maintain symmetry in vertical distance*/
 	margin: 0 auto;
 	padding: 20px 0px 40px 0px;
 	color: #ffffff;
+	min-height:400px;
 }
 #header h2 {
 	color: #ffffff;
