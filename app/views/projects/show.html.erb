@@ -23,7 +23,7 @@
 			</div>
 			<div class="span4">
 					<h3> Current Bounty</h3>
-					<h1><%= "$ " + @project.price.to_s() %> </h1>
+					<h1><%= "$ " + @project.price.to_i().to_s() %> </h1>
 					
 					
           <% if @current_user.nil? %>
