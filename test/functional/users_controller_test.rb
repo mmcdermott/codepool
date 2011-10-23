@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'sessions_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
@@ -18,7 +19,13 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: @user.attributes
+      params = {
+        'name' => 'Foo',
+        'password' => 'abcdef',
+        'password_confirmation' => 'abcdef',
+        'email' => 'foo@test.com',
+      }
+      post :create, user: params
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -31,12 +38,12 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @user.to_param
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should update user" do
     put :update, id: @user.to_param, user: @user.attributes
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to '/sign_in'
   end
 
   test "should destroy user" do

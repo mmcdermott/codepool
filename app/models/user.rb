@@ -50,7 +50,6 @@ class User < ActiveRecord::Base
     self.encrypted_password = encrypt(password)
   end
 
-
   private
 
     def encrypt(string)

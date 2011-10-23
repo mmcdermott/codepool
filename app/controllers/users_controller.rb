@@ -101,7 +101,6 @@ class UsersController < ApplicationController
       flash.now[:error] = "password does not match confirmation"
       render "new"
     end
-    password =
     new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
     @user = User.new(new_hash)
     @user.encrypt_password
@@ -109,7 +108,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in(@user)
         @mail = Mailer.activation(current_user).deliver
-        format.html { redirect_to '/' }
+        format.html { redirect_to @user }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

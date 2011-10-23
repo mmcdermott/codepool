@@ -3,9 +3,13 @@
 one:
   title: MyString
   description: MyText
+  original_issue: http://google.com/
   price: 1.5
+  community: rails
 
 two:
   title: MyString
   description: MyText
+  original_issue: http://google.com/
   price: 1.5
+  community: rails
