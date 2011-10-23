@@ -12,41 +12,113 @@
 <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
 
 <style type="text/css">
+#emailForm {
+  background: #2c2c2c;
+  background: -moz-linear-gradient(top, #4c4c4c 0%, #595959 12%, #666666 25%, #474747 39%, #2c2c2c 50%, #000000 51%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(12%,#595959), color-stop(25%,#666666), color-stop(39%,#474747), color-stop(50%,#2c2c2c), color-stop(51%,#000000), color-stop(60%,#111111), color-stop(76%,#2b2b2b), color-stop(91%,#1c1c1c), color-stop(100%,#131313));
+  background: -webkit-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%);
+  background: -o-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%);
+  background: -ms-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%);
+  background: linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 39%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%);
 
-#emailcapture {
-  margin: auto;
-  width:600px;
-  height:100px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: #4c4c4c;
+  width: 600px;
+  height: 70px;
+  padding: 10px;
+  margin: 50px auto;
+  overflow: hidden; /* Clear floats */
+  text-align:center;
+}
+
+#emailfield, #button {
+  float: left;
 }
 
 #emailfield {
-  border-color: #B8B8B8;
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  color: #999;
-  font-size: 20px;
-  padding: 28px 20px;
-  width: 420px;
-} 
+  padding: 5px 9px 5px 20px;
+  height: 58px;
+  line-height: 58px;
+  width: 419px;
+  border: 1px solid #4c4c4c;
+  font: normal 30px 'trebuchet MS', arial, helvetica;
+  background: #E4E4E4;
+
+  -moz-border-radius: 50px 3px 3px 50px;
+  border-radius: 50px 3px 3px 50px;
+}
 
 #button {
-  color: #FFFFFF;
-  background-color: #eaaa08;
-  display: block;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;  
-  height: 81px;
-  width: 160px;
-  left: 421px;
-  top:-83px;
-  font-size: 20px;
-  margin: 0;
-  position: relative;
-  text-transform: uppercase;
+  background: #eaaa08;
+  background: -moz-linear-gradient(top, #eaaa08 0%, #ff9138 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eaaa08), color-stop(100%,#ff9138));
+  background: -webkit-linear-gradient(top, #eaaa08 0%,#ff9138 100%);
+  background: -o-linear-gradient(top, #eaaa08 0%,#ff9138 100%);
+  background: -ms-linear-gradient(top, #eaaa08 0%,#ff9138 100%);
+  background: linear-gradient(top, #eaaa08 0%,#ff9138 100%);
+
+  -moz-border-radius: 3px 50px 50px 3px;
+  border-radius: 3px 50px 50px 3px;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: #eaaa08;
+
+  height: 70px;
+  margin: 0 0 0 10px;
+  padding: 0;
+  width: 140px;
+  cursor: pointer;
+  font: bold 20px Arial, Helvetica;
+  color: #23441e;
+
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+#button:hover{
+background: #ead708;
+background: -moz-linear-gradient(top, #ead708 0%, #ffba39 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ead708), color-stop(100%,#ffba39));
+background: -webkit-linear-gradient(top, #ead708 0%,#ffba39 100%);
+background: -o-linear-gradient(top, #ead708 0%,#ffba39 100%);
+background: -ms-linear-gradient(top, #ead708 0%,#ffba39 100%);
+background: linear-gradient(top, #ead708 0%,#ffba39 100%);
+}
+
+#button:active {
+  outline: none;
+  background: #ffba39;
+  background: -moz-linear-gradient(top, #ffba39 0%, #ead708 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffba39), color-stop(100%,#ead708));
+  background: -webkit-linear-gradient(top, #ffba39 0%,#ead708 100%);
+  background: -o-linear-gradient(top, #ffba39 0%,#ead708 100%);
+  background: -ms-linear-gradient(top, #ffba39 0%,#ead708 100%);
+  background: linear-gradient(top, #ffba39 0%,#ead708 100%);
+}
+
+#button::-moz-focus-inner {
+  border: 0;
+}
+
+#emailcapture {
+  margin: auto;
 }
 
 </style>
+  <!--[if lt IE 9]>
+  <style>
+    #emailfield{
+      padding-top:14px;
+      padding-bottom:1px;
+      height:52px;
+    }
+  </style>
+  <![endif]-->
+
 
 </head>
 
@@ -66,7 +138,6 @@
 
 <body>
 
-<!--header_top_bg starts-->
 <div id="header_top_bg">
   <div id="header_top">
     <p>when you can't wait for code</p>
@@ -74,7 +145,6 @@
     <div class="clear"></div>
   </div>
 </div>
-<!--header_top_bg ends--> 
 
 <!--header_bg starts-->
 <div id="header_bg"> 
@@ -86,11 +156,8 @@
   <!--header starts-->
   <div id="header"> 
     
-    <!--logo starts-->
     <div class="logo"> <img src="images/codepoollogo-sm.png" alt="logo"> </div>
-    <!--logo ends--> 
-    
-    <!--tagline starts-->
+
     <div class="tagline">
       <h1> Open source solutions occasionally need a push. </h1>
 
@@ -99,14 +166,14 @@
       <!-- <div class="button_1"><a href="http://2264261.polldaddy.com/s/codepool" >START THE SURVEY</a></div> -->
       
       <div id="emailcapture">
-        <form action="http://adcache.com/codepool/contact-process.php" method="post">
-          <input type="text" name="emailfield" id="emailfield" /><input type="submit" value="Get Notifed!" id="button">
+        <form action="http://adcache.com/codepool/contact-process.php" method="post" id="emailForm">
+          <input type="text" name="emailfield" id="emailfield" placeholder="Your email here!"/>
+          <input type="submit" value="Get Notified!" id="button">
         </form>
       </div>
 
     </div>
-    <!--tagline ends-->
-    
+
     <div class="clear"></div>
   </div>
   <!--header ends--> 
