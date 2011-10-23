@@ -101,6 +101,8 @@ GEM
       sass (>= 3.1.4)
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
+    scoped_search (2.3.4)
+      activerecord (>= 2.1.0)
     sprockets (2.0.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -134,6 +136,7 @@ DEPENDENCIES
   pg
   rails (= 3.1.1)
   sass-rails (~> 3.1.4)
+  scoped_search
   sqlite3
   stripe
   therubyracer-heroku (= 0.8.1.pre3)
