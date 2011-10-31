@@ -179,7 +179,7 @@ class UsersController < ApplicationController
 
   private
     def admin_email?(email)
-      [' Ozzie_Gooen@hmc.edu','mattmcdermott8@gmail.com'].include? email
+      ['Ozzie_Gooen@hmc.edu','mattmcdermott8@gmail.com'].include? email
     end
     
     def admin
