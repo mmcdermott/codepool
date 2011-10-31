@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate, :only => [:new, :pre_submit]
+  before_filter :authenticate, :only => [:new, :pre_submit, :destroy]
+  before_filter :admin_user, :only => [:destroy, :close]
   
   # GET /projects
   # GET /projects.json
@@ -29,7 +30,13 @@ class ProjectsController < ApplicationController
     @user = current_user
   end
 
-  
+  def close
+    @project = Project.find(params[:id])
+    @project.donations.each do |donation|
+      charge_user donation.user, donation.amount, @project.title
+    end
+    redirect_to projects_path
+  end
   
   # GET /projects/new
   # GET /projects/new.json
@@ -50,7 +57,7 @@ class ProjectsController < ApplicationController
       if @project.save
         @project.link = "#{root_url}projects/#{@project.id}"
         @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, success: 'Request was created!' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -88,6 +95,18 @@ class ProjectsController < ApplicationController
   end
   
   private
+  
+    def charge_user user, amount, project_title
+      Stripe::Charge.create(
+        :amount => amount*100,  #Amount is in dollars, stripe wants it in cents. 
+        :currency => 'usd',
+        :customer => user.stripe_token,
+        :description => "Charge for User's donation to #{project_title}")
+    end
+
+    def admin_user
+      deny_access unless current_user.admin
+    end
 
     def authenticate
       deny_access unless signed_in?

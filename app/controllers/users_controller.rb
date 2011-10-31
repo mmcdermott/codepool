@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update, :submit_pledge]
+  before_filter :authenticate, :only => [:edit, :update, :submit_pledge, :index]
+  before_filter :admin, :only => [:index, :destroy]
 
   # GET /users
   # GET /users.json
@@ -74,12 +75,14 @@ class UsersController < ApplicationController
     @project = Project.find(params[:pid])
 
     if (token)  
-      amount = params[:pledge_amount]
+      amount = params[:pledge_amount].to_f
       @donation = Donation.new({:project_id => params[:pid], :user_id => params[:id], :amount => amount})
       if @donation.save
         project = @project
         project.price += @donation.amount
-        project.save
+        if project.save
+          flash[:success] = "Project price updated to #{project.price}"
+        end
       end
     end
 
@@ -103,6 +106,9 @@ class UsersController < ApplicationController
     end
     new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
     @user = User.new(new_hash)
+    if admin_email? @user.email
+      @user.admin = true
+    end
     @user.encrypt_password
     respond_to do |format|
       if @user.save
@@ -172,6 +178,13 @@ class UsersController < ApplicationController
   end
 
   private
+    def admin_email?(email)
+      ['mattmcdermott8@gmail.com'].include? email
+    end
+    
+    def admin
+      deny_access unless current_user.admin?
+    end
 
     def authenticate
       deny_access unless signed_in?

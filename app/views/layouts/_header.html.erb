@@ -5,8 +5,8 @@
 
 
       <%= form_tag projects_path, :method => 'get', :class => 'pull-left', :id => 'header_search' do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search", :name => nil %>
+          <%= text_field_tag :search, params[:search], :placeholder => 'Search' %>
+          <% submit_tag "Search", :name => nil %>
       <% end %>
       <ul class="nav" id="header_nav">
         <li ><%= link_to "Browse Requests", root_url %></li>
