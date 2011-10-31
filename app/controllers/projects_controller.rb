@@ -32,8 +32,19 @@ class ProjectsController < ApplicationController
 
   def close
     @project = Project.find(params[:id])
-    @project.donations.each do |donation|
-      charge_user donation.user, donation.amount, @project.title
+    if @project.status == "closed"
+      flash[:notice] = "Project already closed"
+    else
+      @project.donations.each do |donation|
+        charge_user donation.user, donation.amount, @project.title
+      end
+      @project.status = "closed"
+      @project.price = 0
+      if @project.save
+        flash[:success] = "Project closed"
+      else 
+        flash[:error] = "Project status and price not updated (though users charged)!"
+      end
     end
     redirect_to projects_path
   end
