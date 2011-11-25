@@ -1,0 +1,49 @@
+
+#homeIntro {
+  height:310px;
+  border-radius:5px;
+  background-color:#ddd;
+  #introVideo {
+    width:568px;
+    height:300px;
+    float:left;
+    margin:5px 0 5px 5px;
+    background-color:#eee;
+  }
+  #introText {
+    float:right;
+    margin:5px 5px 5px 0;
+    width:346px;
+    height:300px;
+    background-color:#eee;
+    text-align:center;
+    h2 {
+      margin-top:2em;
+    }
+  }
+}
+
+
+@import "components/project_list.css.scss";
+@import "components/tag_cloud.css.scss";
+
+#projectListHeader {
+  background-color:#eee;
+  border-radius:5px;
+  margin:5px auto 10px;
+  padding:5px;
+  width:915px;
+}
+
+#featuredProjectList {
+  border-radius:5px;
+  background-color:#ddd;
+  margin:5px;
+  width:615px;
+  float:left;
+}
+
+#sideBar {
+  width:300px;
+  float:right;
+}

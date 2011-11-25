@@ -1,125 +1,28 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'mixins.css.scss';
+@import "components/project_list.css.scss";
+@import "components/tag_cloud.css.scss";
 
-#project-header {
-  padding:.5em 0;
-  margin-bottom:1em;
-  border-bottom:1px solid #555;
-  h3 {
-    color: #eaaa08;
-    font-size: 18pt;
-    display:inline;
-  }
+#projectListHeader {
+  background-color:#eee;
+  border-radius:5px;
+  margin:5px auto 10px;
+  padding:5px;
+  width:915px;
 }
 
-#projects {
-  margin :0;
-  li {
-    list-style-type:none;
-  }
-  a {
-    text-decoration:inherit;
-    font-size:inherit;
-    font-weight:inherit;
-    color:inherit;
-  }
-  .project {
-    @include gradient(#fcfff4,#e9e9ce);
-    margin-bottom:0.8em;
-    border: 1px solid #ccc;
-    padding: 1em;
-    min-width:400px;
-    min-height:4em;
-    &:hover {
-      @include gradient(#fcfff4,#f2f2d7);
-      cursor:pointer;
-
-      .title {
-        color:#eaaa08;
-      }
-    }
-
-    .title {
-      color: #333;
-      font-weight: bold;
-      font-size: 16px;
-      line-height:17px;
-      display:inline-block;
-      text-decoration:underline;
-      max-width: 480px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .creationTime {
-      font-family:monospace;
-      font-size:90%;
-      vertical-align:top;
-    }
-    .pledgeTotal {
-      font-family: monospace;
-      font-size: 2.1em;
-      color: #EAAA08;
-      text-aligh:right;
-      margin-right: .5em;
-      margin-top: .5em;
-      float: right;
-    }
-
-  }
-}
-
-#new_project {
-    label {
-        width:150px;
-        margin-right:1em;
-    }
-    input[type=text], textarea {
-      width:650px;
-    }
-    input[type=submit] {
-      margin-left:14px;
-    }
-}
-
-#stripe-pledgeAmount{
-  width:56px;
-}
-
-#stripe-form {
-  #creditCardFields {
-    div {
-      clear:both;
-      margin-top:5px;
-    }
-    label {
-      margin-right:1em;
-      width:200px;
-    }
-    display:none;
-  }
-}
-
-.project_pledge_description {
-  margin-left: 30px;
-}
-
-.project_pledge_price {
-  padding-left: 100px;
-}
-
-.project_pledge_title {
+#projectList {
+  width:615px;
   float:left;
-}  
-
-.donate_form {
-  width:850px;
 }
 
-.project_community {
-  margin-top: -.4em;
-  margin-left: 1em;
-  font-weight: bold;
+#sideBar {
+  width:300px;
+  float:right;
+}
+
+.new_project {
+  .field {
+    input, textarea {
+      width:400px;
+    }
+  }
 }

@@ -1,30 +1,25 @@
 
-<div class="row">
-	<div class="span11 issues-area">
-    <div id="project-header">
-      <h3> Crowdfunding Open Source! </h3>
-      <div id="sort-time"> Most Recent </div>
-      <div id="sort-price"> Largest Rewards </div>
-    </div>
-    <ol id="projects">
-      <% @projects.each do |project| %>
-        <li>
-          <a href="<%= url_for project %>">
-            <div class="project">
-              <h3 class="title"><%= project.title %></h3>
-              <span class="creationTime" data-seconds="<%= project.created_at.strftime('%s') %>"> - <%= project.created_at.strftime('%a, %b %d %Y') %></span>
-              <span class="pledgeTotal">$<%= '%d' % project.price %></span>
-              <p class='description'><%= simple_format project.description[0,125]+ '...' if project.description.length > 125%></p>
-            </div>
-          </a>
-        </li>
-      <% end %>
-      <%= will_paginate @projects %>
-    </ol>
-	</div>
-		<div class="span5">
-			<h3> Codepool is Here to Help You </h3>
-			Codepool allows developers to finish projects faster by posting bounties for their most urgent issues.  Creating a request only takes a minute, so create an account now.</p>
-			<%= link_to "Create a Request", new_project_path, :class=>"btn large primary"   %>
-		</div>
-</div>
+<header id="projectListHeader">
+  <%= form_tag projects_path, :method => 'get', :class => '', :id => 'projectSearch' do %>
+    <%= label_tag 'searchField', 'Search' %>
+    <%= text_field_tag :search, params[:search], :id => 'searchField', :placeholder => 'Search Requests' %>
+    <% submit_tag "Search", :name => nil %>
+  <% end %>
+</header>
+
+<section id="projectList">
+  <%= render 'components/project_list', { :projects => @projects} %>
+  <%= will_paginate @projects %>
+</section>
+<section id="sideBar">
+  <h3> Codepool is Here to Help You </h3>
+  <p>
+    Codepool allows developers to finish projects faster by posting bounties for their most urgent issues. Creating a
+    request only takes a minute, so create an account now.
+  </p>
+  <%= link_to "Create a Request", new_project_path, :class=>"btn large primary"   %>
+  <h4>Project Tags</h4>
+  <%= render 'components/tag_cloud', { :tagged => Project }%>
+</section>
+
+

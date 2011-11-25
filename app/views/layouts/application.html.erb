@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>codepool</title>
+  <link href='http://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
+  <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag "https://js.stripe.com/v1/" %>
-  <%= stylesheet_link_tag    "bootstrap" %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 </head>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<%= render 'layouts/header' %>
-
 
 <body>
 <div class="container">
-	<div id="main-page">
-		<% flash.each do |key, value| %>
-		  <div class="alert-message flash <%= key %>"><%= value %></div>
-		<% end %>
-		<%= yield %>
-	</div>
-<%= debug(params) if Rails.env.development? %>
+  <%= render 'layouts/header' %>
+
+  <%= debug(params) if false && Rails.env.development? %>
+  <%= render 'components/flash', { :flash => flash } %>
+
+  <div id="siteContent">
+    <%= yield %>
+    <div id="contentFooter"></div>
+  </div>
+
+  <%= render 'layouts/footer' %>
 </div>
 
-<%= render 'layouts/footer' %>
 </body>
 </html>

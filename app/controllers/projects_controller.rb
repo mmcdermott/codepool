@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     search_query = params[:search]
+#    @projects = Project.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
     @projects = Project.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
       format.html # index.html.erb
@@ -64,6 +65,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.status = 'open'
     respond_to do |format|
       if @project.save
         @project.link = "#{root_url}projects/#{@project.id}"
@@ -93,6 +95,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def tag_cloud
+    @tags = Project.tag_counts_on(:tags)
+  end
+
+  def tag
+    @projects = Project.tagged_with(params[:tag])
+    respond_to do |format|
+      format.html
+      format.json { render json: @projects }
+    end
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
@@ -104,7 +118,7 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
-  
+
   private
   
     def charge_user user, amount, project_title

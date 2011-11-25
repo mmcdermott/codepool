@@ -1,0 +1,5 @@
+<div class="tagCloud">
+  <% tag_cloud(tagged.tag_counts, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+    <%= link_to tag.name, "#", :class => css_class %>
+  <% end %>
+</div>

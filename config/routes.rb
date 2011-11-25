@@ -1,12 +1,14 @@
 Codepool::Application.routes.draw do
+  resources :tags
+
   resources :users
 
-  match	'home',					:to => 'pages#home'
-  match	'home2',					:to => 'pages#home2'
-  match	'landing',					:to => 'pages#landing'
-  match	'thanks',					:to => 'pages#thanks'
+  match	'home',   :to => 'pages#home'
+  match	'home2',  :to => 'pages#home2'
+  match	'landing',:to => 'pages#landing'
+  match	'thanks', :to => 'pages#thanks'
   
-  resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit]
+  resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag]
   resources :projects do
     member do
       get 'pre_submit'

@@ -1,20 +1,32 @@
+<section id="homeIntro">
+  <div id="introVideo">
 
- <% " <div id=evyt13186998178151812> </div>"%>
+  </div>
+  <div id="introText">
+    <h2>Sponsor Open Source Requests!</h2>
+    <p>1000 companies pledged including:</p>
+    <ul>
+      <li>Google</li>
+      <li>IBM</li>
+      <li>Oracle</li>
+      <li>Qualcomm</li>
+      <li>Codepool</li>
+    </ul>
+  </div>
+</section>
+<header id="projectListHeader">
+  <%= form_tag projects_path, :method => 'get', :class => '', :id => 'projectSearch' do %>
+    <%= label_tag 'searchField', 'Search' %>
+    <%= text_field_tag :search, params[:search], :id => 'searchField', :placeholder => 'Search Requests' %>
+    <% submit_tag "Search", :name => nil %>
+  <% end %>
+</header>
 
+<section id="projectList">
+  <%= render "components/project_list", { :projects => @projects} %>
+</section>
 
-<div class="row">
-	<div class="span11 issues-area">
-
-		<h3> Pledge to support Open Source! </h3>
-		<div id="sort-time"> Most Recent </div>
-		<div id="sort-price"> Largest Rewards </div> 
-		<hr id="issue-line">
-		<div id="projects">
-		</div>
-	</div>
-		<div class="span5">
-			<h3> Codepool is Here to Help You </h3>
-			Codepool allows developers to finish projects faster by posting bounties for their most urgent issues.  Creating a request only takes a minute, so create an account now.</p>
-			<%= link_to "Create Request", new_project_path, :class=>"btn large primary"   %>
-		</div>
-</div>
+<section id="sideBar">
+  <h4>Project Tags</h4>
+  <%= render 'components/tag_cloud', { :tagged => Project }%>
+</section>

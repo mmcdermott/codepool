@@ -4,8 +4,7 @@ class Project < ActiveRecord::Base
   
   validates :title, :presence => true
   validates :original_issue, :presence => true
-  validates :community, :presence => true
-  
+
   scope :active, :conditions => {:status => "open"}
 
   scoped_search :on => :community, :aliases => [:open_source_community, :origin]
@@ -13,4 +12,5 @@ class Project < ActiveRecord::Base
   scoped_search :on => :description, :aliases => [:details, :body]
   scoped_search :in => :users, :on => :name, :aliases => [:donor, :contributor, :pledge]
 
+  acts_as_taggable
 end
