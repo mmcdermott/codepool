@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate, :only => [:new, :pre_submit, :destroy]
   before_filter :admin_user, :only => [:destroy, :close]
-  
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag' # <- New
+
   # GET /projects
   # GET /projects.json
   def index

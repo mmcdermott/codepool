@@ -24,6 +24,10 @@
     <%= f.label :IssueLink %>
     <%= f.text_field :original_issue %>
   </div>
+  <div class="field">
+    <%= f.label :tag_list %>
+    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_projects_path, :"data-delimiter" => ', ' %>
+  </div>
   <div class = "field">
     <%= f.hidden_field :price, :value => 0 %>
   </div>

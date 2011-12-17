@@ -8,8 +8,9 @@ Codepool::Application.routes.draw do
   match	'landing',:to => 'pages#landing'
   match	'thanks', :to => 'pages#thanks'
   
-  resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag]
+#  resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag, :autocomplete_tag_name]
   resources :projects do
+    get :autocomplete_tag_name, :on => :collection
     member do
       get 'pre_submit'
       get 'close'

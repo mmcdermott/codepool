@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <title>codepool</title>
   <link href='http://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
-  <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag "https://js.stripe.com/v1/" %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>

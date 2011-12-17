@@ -34,3 +34,27 @@ a:hover {
 .pull-left { float: left; }
 .hide { display: none; }
 .show { display: block; }
+
+.flash {
+  border-radius: 5px;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  margin: 5px 0;
+  padding: 5px;
+  color: white;
+}
+
+.notice {
+  background-color: #43aBc9;
+}
+.warning {
+  background-color: #EEDC94;
+  color: black;
+}
+.success {
+  background-color: #57A957;
+}
+.error {
+  background-color: #C43C35;
+}
+
+

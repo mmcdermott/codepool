@@ -16,6 +16,7 @@ group :development, :test do
 	gem 'sqlite3'
 end
 
+gem 'rails3-jquery-autocomplete'
 gem 'actionmailer'
 gem 'stripe'
 
