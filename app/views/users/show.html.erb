@@ -2,6 +2,11 @@
   <h2>Welcome to codepool!</h2>
 <% end %>
 
+
+<%= image_tag user_pic(@user), :width => "80px" %>
+
+
+
 <p>
   <b>Name:</b>
   <%= @user.name %>
@@ -11,7 +16,10 @@
   <b>Email:</b>
   <%= @user.email %>
 </p>
-
+<p>
+  <b>Description:</b>
+  <%= @user.description %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

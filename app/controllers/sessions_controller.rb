@@ -1,25 +1,38 @@
 class SessionsController < ApplicationController
 
-def new
-  @user = User.new
+  def create
+    omnihash = request.env['omniauth.auth']
+    
+    unless @auth = Authorization.find_from_hash(omnihash)
+      #store token if its new
+      #create new user
+      new_user = User.new_from_hash(omnihash)
+       @auth = Authorization.create_from_hash(omnihash, new_user)
+       flash[:notice] = "Welcome to Codepool!"
+     end
+     
+     # Log the authorizing user in.
+     session[:user_id] = @auth.user.id
+     redirect_to user_path(@auth.user.id)
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Signed out!"
+  end
+
 end
 
 def create
-  user = User.authenticate params[:session][:email], params[:session][:password]
-  
-  unless user.nil?
-    flash[:success] = "LogIn successfull"
-    sign_in user
-    redirect_to root_path
-  else
-    flash.now[:error] = "Email/Password combination don't match"
-    render 'new'
-  end
-end
 
-def destroy
-  sign_out
-  redirect_to root_url
-end
-
+  omnihash = request.env['omniauth.auth']
+  unless @auth = Authorization.find_from_hash(omnihash)
+    #store token if its new
+    #create new user
+    new_user = User.new_from_hash(omnihash)
+     @auth = Authorization.create_from_hash(omnihash, new_user)
+   end
+   # Log the authorizing user in.
+   session[:user_id] = @auth.user.id
+   redirect_to user_path(@auth.user)
 end

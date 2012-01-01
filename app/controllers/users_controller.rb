@@ -98,18 +98,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    password = params[:user][:password]
-    confirm = params[:user][:password_confirmation]
-    if password != confirm && !password.empty?
-      flash.now[:error] = "password does not match confirmation"
-      render "new"
-    end
-    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
-    @user = User.new(new_hash)
-    if admin_email? @user.email
-      @user.admin = true
-    end
-    @user.encrypt_password
+    @user = User.new
+  
     respond_to do |format|
       if @user.save
         sign_in(@user)
@@ -128,16 +118,9 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    password = params[:user][:password]
-    confirm = params[:user][:password_confirmation]
-
-    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email], :description => params[:user][:description]}
-
-    respond_to do |format|
-      if password != confirm || !(password.empty? || password.nil?)
-        flash.now[:error] = "password does not match confirmation"
-        render "new"        
-      elsif @user.update_attributes(new_hash)
+ 
+    respond_to do |format|   
+      if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: "#{params[:user]}" }
         format.json { head :ok }
       else

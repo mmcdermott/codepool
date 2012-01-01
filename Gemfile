@@ -4,6 +4,9 @@ gem 'rails', '3.1.1'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'heroku'
 
+gem 'omniauth-facebook'
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -14,6 +17,8 @@ end
 group :development, :test do
   gem 'test-unit'
 	gem 'sqlite3'
+	gem 'pry'
+	
 end
 
 gem 'rails3-jquery-autocomplete'

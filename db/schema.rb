@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120101045033) do
+ActiveRecord::Schema.define(:version => 20120101070217) do
+
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "token"
+    t.integer  "user_id"
+    t.integer  "uid",        :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "donations", :force => true do |t|
     t.integer  "user_id"
