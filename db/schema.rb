@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125212941) do
+ActiveRecord::Schema.define(:version => 20120101045033) do
 
   create_table "donations", :force => true do |t|
     t.integer  "user_id"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20111125212941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.string   "link"
     t.string   "original_issue"
+    t.string   "link"
     t.string   "community"
   end
 
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20111125212941) do
     t.boolean  "admin"
     t.string   "address"
     t.boolean  "paypal"
+    t.string   "avatar"
+    t.text     "description"
   end
 
 end

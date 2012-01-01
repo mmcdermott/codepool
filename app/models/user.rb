@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :description
 
   has_many :donations 
   has_many :projects, :through => :donations
@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
                         :format       => {:with => email_regex},
                         :uniqueness   => {:case_sensitive => false}
                         
-  validates :name,      :presence   => true
-  validates :email,     :presence   => true,
-                        :format     => {:with => email_regex},
-                        :uniqueness => {:case_sensitive => false}
 #  validates :password, :presence     => true,
 #                       :confirmation => true,
 #                       :length       => { :within => 6..40 }

@@ -130,14 +130,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     password = params[:user][:password]
     confirm = params[:user][:password_confirmation]
-    if password != confirm || !(password.empty? || password.nil?)
-      flash.now[:error] = "password does not match confirmation"
-      render "new"
-    end
-    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email]}
+
+    new_hash = {:name => params[:user][:name], :password => password, :email => params[:user][:email], :description => params[:user][:description]}
 
     respond_to do |format|
-      if @user.update_attributes(new_hash)
+      if password != confirm || !(password.empty? || password.nil?)
+        flash.now[:error] = "password does not match confirmation"
+        render "new"        
+      elsif @user.update_attributes(new_hash)
         format.html { redirect_to @user, notice: "#{params[:user]}" }
         format.json { head :ok }
       else
