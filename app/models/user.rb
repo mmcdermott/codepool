@@ -19,12 +19,8 @@ class User < ActiveRecord::Base
 #  before_save :encrypt_password
 
   def self.new_from_hash(hash)
-    if hash[:provider] == "facebook"
-      user = User.new(:name => hash[:info][:name], :email => hash[:info][:email])
-    elsif hash[:provider] == "github"
-      user = User.new(:email => hash[:info][:email])
-      user.name ||= hash[:info][:nickname]
-    end
+    user = User.new(:name => hash[:info][:name], :email => hash[:info][:email])
+    user.name ||= hash[:info][:nickname] # In github the name can be nil, so this sets it to the user name instead.
     if user.save
       return user
     else

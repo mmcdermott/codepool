@@ -30,7 +30,8 @@ Codepool::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/thank_you', :to => 'pages#thank_you'
 
-
+  match '/new_individual', :to => 'users#new_individual'
+  
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/signout" => "sessions#destroy", :as => :signout
   
