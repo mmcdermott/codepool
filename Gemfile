@@ -4,8 +4,10 @@ gem 'rails', '3.1.1'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'heroku'
 
+#omniauth gems (one for each provider)
 gem 'omniauth-facebook'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem 'omniauth-identity'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -42,8 +44,8 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# To use ActiveModel has_secure_password (and omniauth-identity too)
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
