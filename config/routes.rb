@@ -17,6 +17,7 @@ Codepool::Application.routes.draw do
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :identities, :only => [:new, :create, :destroy]
   
   match '/submission', :to => 'users#pre_submit'
 
