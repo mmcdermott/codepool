@@ -21,8 +21,8 @@ Codepool::Application.routes.draw do
   
   match '/submission', :to => 'users#pre_submit'
 
-  match '/sign_up',  :to => 'users#new'
-  match '/sign_in',  :to => 'sessions#new'
+  match '/sign_up',  :to => 'identities#new'
+  match '/sign_in',  :to => 'users#new'
   match '/sign_out', :to => 'sessions#destroy'
   match '/submit_pledge', :to => 'users#submit_pledge'
   match '/mail/send_activation', :to => 'users#send_activation'

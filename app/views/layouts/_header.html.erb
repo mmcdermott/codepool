@@ -8,7 +8,7 @@
       <li><%= link_to "Blog", '/blog' %></li>
       <li><%= link_to "About", '/about' %></li>
       <% if current_user.nil? %>
-        <li class="actionFocus"><%= link_to "Login", "/auth/facebook" %></li>
+        <li class="actionFocus"><%= link_to "Login", sign_in_path %></li>
         <li class="actionFocus"><%= link_to "Register", sign_up_path %></li>
       <% end %>
     </ul>
