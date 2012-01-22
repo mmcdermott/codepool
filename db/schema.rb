@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103192745) do
+ActiveRecord::Schema.define(:version => 20120122032605) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20120103192745) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "company"
+    t.text     "description"
   end
 
   create_table "projects", :force => true do |t|
@@ -80,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20120103192745) do
     t.boolean  "paypal"
     t.string   "avatar"
     t.text     "description"
+    t.integer  "tax_id"
+    t.boolean  "company"
   end
 
 end

@@ -5,13 +5,14 @@
 
 <%= image_tag user_pic(@user), :width => "80px" %>
 
-
-
 <p>
   <b>Name:</b>
   <%= @user.name %>
 </p>
-
+<p>
+  <b>Type:</b>
+  <%= (@user.company ? "Company" : "Individual") unless @user.company.nil? %>
+</p>
 <p>
   <b>Email:</b>
   <%= @user.email %>
