@@ -30,8 +30,8 @@ class UsersController < ApplicationController
   end
 
   def submit
-    @project = Project.find(params[:id])
-    @project.donations.each do |donation|
+    @request = Request.find(params[:id])
+    @request.donations.each do |donation|
       unless donation.nil
         user = donation.user
         Stripe::Charge.create(
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
         )
       end
     end
-    @project.status = "finished"
-    @project.price = 0
-    @project.save
+    @request.status = "finished"
+    @request.price = 0
+    @request.save
   end
 
   # GET /users/1/edit
@@ -71,16 +71,16 @@ class UsersController < ApplicationController
       end
     end
 
-    @project = Project.find(params[:pid])
+    @request = Request.find(params[:pid])
 
     if (token)  
       amount = params[:pledge_amount].to_f
-      @donation = Donation.new({:project_id => params[:pid], :user_id => params[:id], :amount => amount})
+      @donation = Donation.new({:request_id => params[:pid], :user_id => params[:id], :amount => amount})
       if @donation.save
-        project = @project
-        project.price += @donation.amount
-        if project.save
-          flash[:success] = "Project price updated to #{project.price}"
+        request = @request
+        request.price += @donation.amount
+        if request.save
+          flash[:success] = "Request price updated to #{request.price}"
         end
       end
     end
@@ -131,7 +131,7 @@ class UsersController < ApplicationController
   
   def pre_submit
     @user = current_user
-    @project = Project.find(params[:user][:pid])
+    @request = Request.find(params[:user][:pid])
     paypal = params[:user][:paypal]
     @user.paypal = paypal
     address = params[:user][:address]
@@ -140,8 +140,8 @@ class UsersController < ApplicationController
       flash[:error] = "You must select a payment style"
       redirect_to 'pre_submit'
     end
-    if @user.save && !(@user.nil? or @project.nil?)
-      Mailer.submission_confirmation(@user,@project).deliver
+    if @user.save && !(@user.nil? or @request.nil?)
+      Mailer.submission_confirmation(@user,@request).deliver
       redirect_to thank_you_path
     end
   end

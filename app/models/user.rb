@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :donations 
   has_many :authorizations
-  has_many :projects, :through => :donations
+  has_many :request, :through => :donations
   
   def self.new_from_omniauth_hash(hash)
     user = User.new(:name => hash[:info][:name], :email => hash[:info][:email], :company => hash[:info][:company], :description => hash[:info][:description])

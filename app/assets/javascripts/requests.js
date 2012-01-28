@@ -17,7 +17,7 @@ var stripe = (function() {
   };
 
   function setup() {
-    pid = $('#project-id').val();
+    pid = $('#request-id').val();
     uid = $('#user-id').val();
     spinner = new Spinner();
 

@@ -1,19 +1,4 @@
-<section id="homeIntro">
-  <div id="introVideo">
 
-  </div>
-  <div id="introText">
-    <h2>Sponsor Open Source Requests!</h2>
-    <p>1000 companies pledged including:</p>
-    <ul>
-      <li>Google</li>
-      <li>IBM</li>
-      <li>Oracle</li>
-      <li>Qualcomm</li>
-      <li>Codepool</li>
-    </ul>
-  </div>
-</section>
 <header id="requestListHeader">
   <%= form_tag requests_path, :method => 'get', :class => '', :id => 'requestSearch' do %>
     <%= label_tag 'searchField', 'Search' %>
@@ -23,10 +8,18 @@
 </header>
 
 <section id="requestList">
-  <%= render "components/request_list", { :requests => @requests} %>
+  <%= render 'components/request_list', { :requests => @requests} %>
+  <%= will_paginate @requests %>
 </section>
-
 <section id="sideBar">
+  <h3> Codepool is Here to Help You </h3>
+  <p>
+    Codepool allows developers to finish requests faster by posting bounties for their most urgent issues. Creating a
+    request only takes a minute, so create an account now.
+  </p>
+  <%= link_to "Create a Request", new_request_path, :class=>"btn large primary"   %>
   <h4>Request Tags</h4>
   <%= render 'components/tag_cloud', { :tagged => Request }%>
 </section>
+
+

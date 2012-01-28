@@ -1,3 +1,3 @@
-module ProjectsHelper
+module RequestsHelper
   include ActsAsTaggableOn::TagsHelper
 end

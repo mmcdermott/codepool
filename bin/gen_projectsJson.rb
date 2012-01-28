@@ -62,7 +62,7 @@ $tags = %w(
   php  
 )
 
-$projects = []
+$requests = []
 
 $num.times do
   pledges = pledges(rand(20))
@@ -70,7 +70,7 @@ $num.times do
   pledges.each do |pledge| 
     pledgeTotal += pledge['amount'] 
   end
-  $projects.push({
+  $requests.push({
     'pid'     => num(9),
     'title'   => words(10),
     'brief'   => words(25),
@@ -81,4 +81,4 @@ $num.times do
   })
 end
 
-print JSON.pretty_generate($projects)
+print JSON.pretty_generate($requests)

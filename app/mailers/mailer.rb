@@ -8,9 +8,9 @@ class Mailer < ActionMailer::Base
     );
   end
 
-  def submission_confirmation(user,project)
+  def submission_confirmation(user,request)
     @user = user
-    @project = project
+    @request = request
     mail(
       :to  => "codepoolorg@gmail.com",
     );

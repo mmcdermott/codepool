@@ -1,18 +1,18 @@
 <div class="row" >
 	<div class="span16">
-		<h2><%= link_to(@project.title, @project) %></h2>
-		<%= if authority? then link_to "Destroy (admin)", @project, :method => 'delete' end %>
+		<h2><%= link_to(@request.title, @request) %></h2>
+		<%= if authority? then link_to "Destroy (admin)", @request, :method => 'delete' end %>
 
-		<% unless @project.community.nil? || @project.community.empty? %>
-		  <span class='label warning'><%=@project.community %>issue</span>
+		<% unless @request.community.nil? || @request.community.empty? %>
+		  <span class='label warning'><%=@request.community %>issue</span>
 		<% end %>
 		<div class="row" id="show-request-1">
 			<div class="span9">
 				<h3>Description</h3>
-				<p><%= simple_format @project.description %></p>
+				<p><%= simple_format @request.description %></p>
 				</br>
 				<h4>Original Issue</h4>	
-				<%= link_to @project.original_issue, @project.original_issue %>
+				<%= link_to @request.original_issue, @request.original_issue %>
 				<h3>Share This Issue </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
 				<%= link_to(request.url, request.url) %></br></br>
@@ -21,12 +21,12 @@
 				</br></br>
 				<h3>Submit a Result </h3>
 				<p>Solved this issue? Claim your bounty below.</p>
-				<%= link_to "Submit", pre_submit_project_path, :class => "btn small primary" %>
-				<%= if authority? then link_to "Close Request (admin)", close_project_path end %>
+				<%= link_to "Submit", pre_submit_request_path, :class => "btn small primary" %>
+				<%= if authority? then link_to "Close Request (admin)", close_request_path end %>
 			</div>
 			<div class="span4">
 					<h3> Current Bounty</h3>
-					<h1><%= "$ " + @project.price.to_i().to_s() %> </h1>
+					<h1><%= "$ " + @request.price.to_i().to_s() %> </h1>
 					
 					
           <% if @current_user.nil? %>
@@ -35,7 +35,7 @@
 						<form id="stripe-form" method="post" action='/submit_pledge'>
 						  <fieldset id="pledgeBox">
 						    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
-						    <input type="hidden" id="project-id" name="pid" value="<%= @project.id %>">
+						    <input type="hidden" id="request-id" name="pid" value="<%= @request.id %>">
 						    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
 						    <input type='text' id='stripe-pledgeAmount' name='pledge_amount' value='' >
 						    <input type="hidden" id="user-hasToken" value="<%= !(@current_user.stripe_token.nil? || @current_user.stripe_token.empty?) ? 1 : 0 %>">

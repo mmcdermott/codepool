@@ -1,0 +1,16 @@
+  <ol class="requestList">
+    <% requests.each do |request| %>
+      <li>
+        <a href="<%= url_for request %>">
+          <section class="request">
+            <h3 class="title"><%= request.title %></h3>
+            <span class="creationTime" data-seconds="<%= request.created_at.strftime('%s') %>"><%= request.created_at.strftime('%a, %b %d %Y') %></span>
+            <span class="pledgeTotal">$<%= '%d' % request.price %></span>
+            <p class='description'>
+              <%= request.description[0,125]+ '...' if request.description.length > 125%>
+            </p>
+          </section>
+        </a>
+      </li>
+    <% end %>
+  </ol>

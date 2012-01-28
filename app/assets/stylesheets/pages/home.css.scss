@@ -24,10 +24,10 @@
 }
 
 
-@import "components/project_list.css.scss";
+@import "components/request_list.css.scss";
 @import "components/tag_cloud.css.scss";
 
-#projectListHeader {
+#requestListHeader {
   background-color:#eee;
   border-radius:5px;
   margin:5px auto 10px;
@@ -35,7 +35,7 @@
   width:915px;
 }
 
-#featuredProjectList {
+#featuredrequestList {
   border-radius:5px;
   background-color:#ddd;
   margin:5px;

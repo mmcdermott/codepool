@@ -1,7 +1,7 @@
-@import "components/project_list.css.scss";
+@import "components/request_list.css.scss";
 @import "components/tag_cloud.css.scss";
 
-#projectListHeader {
+#requestListHeader {
   background-color:#eee;
   border-radius:5px;
   margin:5px auto 10px;
@@ -9,7 +9,7 @@
   width:915px;
 }
 
-#projectList {
+#requestList {
   width:615px;
   float:left;
 }
@@ -19,7 +19,7 @@
   float:right;
 }
 
-.new_project {
+.new_request {
   .field {
     input, textarea {
       width:400px;

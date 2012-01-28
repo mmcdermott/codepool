@@ -10,8 +10,8 @@ Codepool::Application.routes.draw do
   match	'landing',:to => 'pages#landing'
   match	'thanks', :to => 'pages#thanks'
   
-#  resources :projects, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag, :autocomplete_tag_name]
-  resources :projects do
+#  resources :requests, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag, :autocomplete_tag_name]
+  resources :requests do
     get :autocomplete_tag_name, :on => :collection
     member do
       get 'pre_submit'
@@ -96,5 +96,5 @@ Codepool::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  root :to => 'projects#index'
+  root :to => 'requests'
 end

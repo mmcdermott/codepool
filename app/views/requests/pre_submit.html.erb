@@ -2,7 +2,7 @@ Please Select your method of payment:
 
 <%= form_for @user, :url => "/submission" do |f| %>
   <div class = "field">
-    <%= f.hidden_field :pid, :value => @project.id %>
+    <%= f.hidden_field :pid, :value => @request.id %>
   </div>
   <div class = "field">
     Would you like to be paid via paypal? <br />

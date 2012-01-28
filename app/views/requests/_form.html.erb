@@ -1,11 +1,11 @@
 
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
 
       <ul>
-      <% @project.errors.full_messages.each do |msg| %>
+      <% @request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :tag_list %>
-    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_projects_path, :"data-delimiter" => ', ' %>
+    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_requests_path, :"data-delimiter" => ', ' %>
   </div>
   <div class = "field">
     <%= f.hidden_field :price, :value => 0 %>
