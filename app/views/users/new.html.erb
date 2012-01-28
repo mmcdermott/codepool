@@ -4,15 +4,31 @@
   <strong>Don&rsquo;t use these services?</strong>
   <%= link_to "Create an account", new_identity_path %> or Sign In below
 </p>
-
-<%= form_tag "/auth/identity/callback" do %>
+<%= form_tag "/auth/identity/register" do %>
+  <% if @identity && @identity.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <ul>
+      <% @identity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  Are You a
   <div class="field">
-    <%= label_tag :auth_key, "Email" %><br>
-    <%= text_field_tag :auth_key %>
+    <%= label_tag :email %><br>
+    <%= text_field_tag :email, @identity.try(:email) %>
   </div>
   <div class="field">
     <%= label_tag :password %><br>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Login" %></div>
+  <div class="field">
+    <%= label_tag :password_confirmation %><br>
+    <%= password_field_tag :password_confirmation %>
+  </div>
+  <div class="actions"><%= submit_tag "Register" %></div>
 <% end %>
+
+

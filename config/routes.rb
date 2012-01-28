@@ -1,7 +1,9 @@
 Codepool::Application.routes.draw do
   resources :tags
 
-  resources :users
+  resources :users do
+    get 'new_info'
+  end
 
   match	'home',   :to => 'pages#home'
   match	'home2',  :to => 'pages#home2'
@@ -35,7 +37,7 @@ Codepool::Application.routes.draw do
   
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/signout" => "sessions#destroy", :as => :signout
-  
+  match '/new_info' => 'users#new_info'  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

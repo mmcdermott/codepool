@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
+  title: Project_1
   description: MyText
   original_issue: http://google.com/
   price: 1.5
   community: rails
 
 two:
-  title: MyString
+  title: Project_2
   description: MyText
   original_issue: http://google.com/
   price: 1.5
