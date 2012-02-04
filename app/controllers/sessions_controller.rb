@@ -13,12 +13,11 @@ class SessionsController < ApplicationController
      
      # Log the authorizing user in.
      session[:user_id] = @auth.user.id
-     redirect_to user_path(@auth.user.id)
+     redirect_to edit_user_path(@auth.user.id)
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, :notice => "Signed out!"
   end
-
 end

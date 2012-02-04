@@ -1,4 +1,7 @@
 <h1>New Account</h1>
+<p> Feel free to sign up via either of the services listed, or create an account below </p>
+<%= link_to "Facebook", "/auth/facebook" %>
+<%= link_to "github", "/auth/github" %>
 
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
