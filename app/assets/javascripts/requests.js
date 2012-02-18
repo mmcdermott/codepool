@@ -1,3 +1,49 @@
+Handlebars.registerHelper('time_since', function(date){
+  var time = moment(date);
+  console.log(date);
+  console.log(time.fromNow());
+  return time.fromNow();
+});
+
+
+$(function(){
+  $('#github-issue').submit(requestIssue);
+});
+
+function requestIssue(evt) {
+  evt.preventDefault();
+  $('#github-issue-details').spin();
+  var issueUrl = $('#github-issue-url').val();
+  issueUrl = URI(issueUrl);
+  var pathname = issueUrl.pathname().substring(1); // omit leading slash
+  var parts = pathname.split('/');
+  var username     = parts[0];
+  var project      = parts[1];
+  var resourceType = parts[2];
+  var number       = parts[3];
+
+  var issue;
+  if (resourceType.match(/issue/i)) {
+    issue = gh.issue(username,project,number).show(function(res){
+      showIssue(res.issue,username,project);
+    });
+  } else {
+    console.log('unsupported url right now');
+  }
+
+}
+
+function showIssue(issue) {
+  $('#github-issue-details').spin(false);
+  var source   = $("#github-issue-template").html();
+  var template = Handlebars.compile(source);
+  var output = template(issue);
+  $('#github-issue-details').prepend(output);
+  $('#request_title').val(issue.title);
+  $('#request_original_issue').val(issue.html_url);
+  $('#request_description').val(issue.body);
+  $('#github-issue-details form').show();
+}
 
 $(function() {
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
