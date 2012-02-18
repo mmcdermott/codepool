@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     omnihash = request.env['omniauth.auth']
-    
+    omnihash[:info][:company] = params[:company] unless (omnihash[:info][:company] or !params.has_key? :company)
     unless @auth = Authorization.find_from_hash(omnihash)
       #store token if its new
       #create new user
