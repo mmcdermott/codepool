@@ -10,19 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <div class = "field">
+    <%= f.hidden_field :company, value: false %>
+  </div>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="field"> 
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_field :description %>
   </div>
-
   <div class="actions">
     <%= f.submit :class => "btn primary"%>
   </div>

@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     search_query = params[:search]
-    @requests = Request.active.request_order(params[:order])
+    @requests = Request.active.funded.request_order(params[:order])
 #   @requests = Request.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
     @requests = @requests.search_for(search_query).paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
@@ -68,6 +68,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.status = 'open'
+    @request.price = 0;
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"

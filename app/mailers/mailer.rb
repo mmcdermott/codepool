@@ -8,11 +8,13 @@ class Mailer < ActionMailer::Base
     );
   end
 
-  def submission_confirmation(user,request)
+  def submission_confirmation(user,request,issueLink)
     @user = user
     @request = request
+    @issueLink = issueLink
     mail(
-      :to  => "codepoolorg@gmail.com",
+      to:       "codepoolorg@gmail.com",
+      subject:  "Someone Closed A Request",
     );
   end
 end

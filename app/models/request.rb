@@ -8,6 +8,7 @@ class Request < ActiveRecord::Base
   validates :original_issue, :presence => true
 
   scope :active, :conditions => {:status => "open"}
+  scope :funded, where('price > 0')
 
   scope :request_order, lambda {|order_method| 
     case order_method

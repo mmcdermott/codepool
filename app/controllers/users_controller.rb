@@ -49,7 +49,13 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @form = @user.company? ? 'company_form' : 'individual_form'
+    if @user.company
+      @form = 'company_form'
+    elsif @user.company == false
+      @form = 'individual_form'
+    else
+      @form = false
+    end
   end
   
   def new_info
@@ -132,17 +138,13 @@ class UsersController < ApplicationController
   
   def pre_submit
     @user = current_user
-    @request = Request.find(params[:user][:pid])
-    paypal = params[:user][:paypal]
-    @user.paypal = paypal
-    address = params[:user][:address]
-    @user.address = address
-    if paypal == 0 && (address.empty? || address.nil?)
-      flash[:error] = "You must select a payment style"
-      redirect_to 'pre_submit'
-    end
-    if @user.save && !(@user.nil? or @request.nil?)
-      Mailer.submission_confirmation(@user,@request).deliver
+    @request = Request.find(params[:pid])
+    issue_link = params[:issue_link]
+    if issue_link.nil? || issue_link.empty?
+      flash[:error] = "You must submit your closing pull request link"
+      redirect_to pre_submit_request_path(@request)
+    elsif !(@user.nil? or @request.nil?)
+      Mailer.submission_confirmation(@user,@request, issue_link).deliver
       redirect_to thank_you_path
     end
   end

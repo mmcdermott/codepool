@@ -3,25 +3,24 @@
 		<h2><%= link_to(@request.title, @request) %></h2>
 		<%= if authority? then link_to "Destroy (admin)", @request, :method => 'delete' end %>
 
-		<% unless @request.community.nil? || @request.community.empty? %>
-		  <span class='label warning'><%=@request.community %>issue</span>
-		<% end %>
 		<div class="row" id="show-request-1">
 			<div class="span9">
 				<h3>Description</h3>
 				<p><%= simple_format @request.description %></p>
 				</br>
-				<h4>Original Issue</h4>	
-				<%= link_to @request.original_issue, @request.original_issue %>
+				<h4>Original Issue link : </h4>
+        <%= link_to @request.original_issue, @request.original_issue %>
 				<h3>Share This Issue </h3>
 				<p>Use the link below to share the bounty for this issue and help the community get a solution faster.</p>
 				<%= link_to(request.url, request.url) %></br></br>
 				<a href= "https://twitter.com/share?text=A%20bounty%20has%20been%20posted%20for%20this%20programming%20issue" > <img src="/assets/twitter.png"> </a>
 				<a href="http://www.facebook.com/sharer.php?u=http://codepool.org/" title="Share this Bounty on Facebook"> <img src="/assets/facebook.png"> </a>
 				</br></br>
-				<h3>Submit a Result </h3>
-				<p>Solved this issue? Claim your bounty below.</p>
-				<%= link_to "Submit", pre_submit_request_path, :class => "btn small primary" %>
+        <% if @request.price > 0   %>
+          <h3>Submit a Result </h3>
+          <p>Solved this issue? Claim your bounty below.</p>
+          <%= link_to "Submit", pre_submit_request_path, :class => "btn small primary" %>
+        <% end %>
 				<%= if authority? then link_to "Close Request (admin)", close_request_path end %>
 			</div>
 			<div class="span4">
