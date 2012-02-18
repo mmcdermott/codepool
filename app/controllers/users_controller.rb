@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @form = @user.company? ? 'company_form' : 'individual_form'
   end
   
   def new_info

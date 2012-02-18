@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218035912) do
+ActiveRecord::Schema.define(:version => 20120218075932) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120218035912) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
+    t.string   "contact_person_position"
   end
 
 end
