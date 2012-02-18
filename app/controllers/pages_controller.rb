@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   layout :resolve_layout
   
   def home
-    @requests = Request.active.paginate(:page => params[:page], :per_page => 10)
+    @requests = Request.active.request_order("recent").paginate(:page => params[:page], :per_page => 10)
   end
   
   def landing

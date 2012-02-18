@@ -9,6 +9,17 @@ class Request < ActiveRecord::Base
 
   scope :active, :conditions => {:status => "open"}
 
+  scope :request_order, lambda {|order_method| 
+    case order_method
+      when "recent"
+        order("created_at desc")
+      when "most_expensive"
+        order("price desc")
+      when "least_expensive"
+        order("price asc")
+    end
+  }
+
   scoped_search :on => :community, :aliases => [:open_source_community, :origin]
   scoped_search :on => :title, :aliases => [:bug, :issue, :issue_title]
   scoped_search :on => :description, :aliases => [:details, :body]

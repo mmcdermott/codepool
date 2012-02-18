@@ -1,10 +1,6 @@
 
 <header id="requestListHeader">
-  <%= form_tag requests_path, :method => 'get', :class => '', :id => 'requestSearch' do %>
-    <%= label_tag 'searchField', 'Search' %>
-    <%= text_field_tag :search, params[:search], :id => 'searchField', :placeholder => 'Search Requests' %>
-    <% submit_tag "Search", :name => nil %>
-  <% end %>
+  <%= render "components/request_list_header" %>
 </header>
 
 <section id="requestList">
