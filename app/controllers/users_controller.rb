@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    @donations = @user.donations
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -49,6 +49,13 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    if @user.company
+      @form = 'company_form'
+    elsif @user.company == false
+      @form = 'individual_form'
+    else
+      @form = false
+    end
   end
   
   def new_info
@@ -101,7 +108,7 @@ class UsersController < ApplicationController
   
     respond_to do |format|
       if @user.save
-        sign_in(@user)
+        sign_in_and_redirect_to(@user, edit_user_path(@user))
         flash[:notice] = "Welcome to Codepool!"
         @mail = Mailer.activation(current_user).deliver
         format.html { redirect_to @user }
