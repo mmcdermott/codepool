@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
   def index
     search_query = params[:search]
 #    @requests = Request.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
-    @requests = Request.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
+    @requests = Request.active.funded.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @requests }
@@ -66,7 +66,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
-    @request.status = 'open'
+    @request.status = 'pending'
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"

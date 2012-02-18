@@ -6,6 +6,7 @@ class Request < ActiveRecord::Base
   validates :original_issue, :presence => true
 
   scope :active, :conditions => {:status => "open"}
+  scope :funded, where('price > 0')
 
   scoped_search :on => :community, :aliases => [:open_source_community, :origin]
   scoped_search :on => :title, :aliases => [:bug, :issue, :issue_title]
