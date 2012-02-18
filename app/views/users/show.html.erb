@@ -21,6 +21,23 @@
   <b>Description:</b>
   <%= @user.description %>
 </p>
+<table >
+  <tr>
+    <td> Total Bounty </td> 
+    <td> <%= "#{@user.name}'s Donation" %> </td> 
+    <td> Post Date </td> 
+    <td> Deadline </td> 
+  </td>
+    
+    <% @donations.each do |donation| %>
+  <tr>
+    <td> <%= donation.amount %> </td>
+    <td> <%= donation.request.title %> </td>
+    <td><%= donation.amount %></td>
+    <td> <%= donation.created_at %></td>
+</tr>
+<% end %> 
+</table
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
