@@ -1,9 +1,3 @@
-Handlebars.registerHelper('time_since', function(date){
-  var time = moment(date);
-  console.log(date);
-  console.log(time.fromNow());
-  return time.fromNow();
-});
 
 
 $(function(){
@@ -11,6 +5,8 @@ $(function(){
 });
 
 function requestIssue(evt) {
+  $('#github-issue').hide();
+  if (evt.isDefaultPrevented()) return;
   evt.preventDefault();
   $('#github-issue-details').spin();
   var issueUrl = $('#github-issue-url').val();
