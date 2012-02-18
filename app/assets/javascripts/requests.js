@@ -1,7 +1,5 @@
 Handlebars.registerHelper('time_since', function(date){
   var time = moment(date);
-  console.log(date);
-  console.log(time.fromNow());
   return time.fromNow();
 });
 
