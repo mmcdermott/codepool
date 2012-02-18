@@ -37,7 +37,7 @@ Codepool::Application.routes.draw do
   
   match '/auth/:provider/callback', :to => 'sessions#create'
   match "/signout" => "sessions#destroy", :as => :signout
-  match '/new_info' => 'users#new_info'  
+  match '/new_info' => 'users#new_info'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
