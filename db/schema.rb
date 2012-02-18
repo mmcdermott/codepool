@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218035912) do
+ActiveRecord::Schema.define(:version => 20120218203400) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -85,13 +85,14 @@ ActiveRecord::Schema.define(:version => 20120218035912) do
     t.boolean  "company"
     t.text     "company_info"
     t.string   "company_name"
-    t.string   "website_line"
+    t.string   "website_link"
     t.string   "logo"
     t.string   "contact_person_name"
     t.integer  "contact_person_phone"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
+    t.string   "github_link"
   end
 
 end

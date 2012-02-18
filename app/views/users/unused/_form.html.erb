@@ -1,3 +1,4 @@
+Your Github link is <%= @user.github_link %>. This is non-editable, as we need your github identity for verification of posting and solving. 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,8 +12,12 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.hidden_field :company, value: true %>
+    <%= label_tag :company %>
+    <%= radio_button_tag :company, true, true %><br />
+    <%= label_tag :individual %>
+    <%= radio_button_tag :company, false %><br />
   </div>
+  <br /> Company Fields: <br />
   <div class="field">
     <%= f.label :company_name %>
     <%= f.text_field :company_name %>
@@ -40,6 +45,19 @@
   <div class="field">
     <%= f.label :tax_id %>
     <%= f.text_field :tax_id %>
+  </div>
+  <br />Individual Fields: <br />
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field"> 
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
   </div>
   <div class="actions">
     <%= f.submit :class => "btn primary"%>
