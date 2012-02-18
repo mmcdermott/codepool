@@ -1,17 +1,21 @@
 <h1>Editing user</h1>
 
-<% if @form %>
-  <%= render @form %>
-<% else %>
-  <div id="company_form">
-    Company Fields: <br />
-    <%= render 'company_form' %>
-  </div>
-  <div id="individual_form">
-    Individual Fields: <br />
-    <%= render 'individual_form' %>
-  </div>
-<% end %>
+<div class="container">
+  <% if @form %>
+    <%= render @form %>
+  <% else %>
+    <div id="company_form">
+      Company Fields: <br />
+      <%= render 'company_form' %>
+    </div>
+    <div id="individual_form">
+      Individual Fields: <br />
+      <%= render 'individual_form' %>
+    </div>
+  <% end %>
+</div>
+<div class="clear">
+</div>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :request, :through => :donations
   
   def self.new_from_omniauth_hash(hash)
-    binding.pry
     user = User.new(email: hash[:info][:email], name: hash[:info][:name], company_name: hash[:extra][:raw_info][:company], contact_person_name: hash[:info][:name], description: hash[:extra][:raw_info][:bio], website_link: hash[:info][:urls][:blog], github_link: hash[:info][:urls][:GitHub])
     user.name ||= hash[:info][:nickname] # In github the name can be nil, so this sets it to the user name instead.
     if user.save
