@@ -66,7 +66,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
-    @request.status = 'pending'
+    @request.status = 'open'
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"
