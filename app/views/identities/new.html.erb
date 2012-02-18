@@ -16,10 +16,10 @@
   <% end %>
   Are You a
   <div class="field">
-    <%= label_tag :company %>
-    <%= radio_button_tag :company, true, selected: @identity.try(:company)%><br />
-    <%= label_tag :individual %>
-    <%= radio_button_tag :company, false, selected: !@identity.try(:company)%><br /> 
+    <%= label_tag :company %><br />
+    <%= radio_button_tag :company, true, true %><br />
+    <%= label_tag :individual %><br />
+    <%= radio_button_tag :company, false %><br />
   </div>
   <div class="field">
     <%= label_tag :name %><br>
@@ -28,10 +28,6 @@
   <div class="field">
     <%= label_tag :email %><br>
     <%= text_field_tag :email, @identity.try(:email) %>
-  </div>
-  <div calss="field">
-    <%= label_tag :description%><br />
-    <%= text_area_tag :description %>
   </div>
   <div class="field">
     <%= label_tag :password %><br>

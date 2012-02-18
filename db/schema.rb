@@ -10,9 +10,6 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
-
-ActiveRecord::Schema.define(:version => 20120128211138) do
-
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "token"
@@ -37,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20120128211138) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "company"
-    t.text     "description"
   end
 
   create_table "requests", :force => true do |t|
@@ -84,6 +80,17 @@ ActiveRecord::Schema.define(:version => 20120128211138) do
     t.text     "description"
     t.integer  "tax_id"
     t.boolean  "company"
+
+    t.text     "company_info"
+    t.string   "company_name"
+    t.string   "website_line"
+    t.string   "logo"
+    t.string   "contact_person_name"
+    t.integer  "contact_person_phone"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "contact_person_position"
   end
 
 end
