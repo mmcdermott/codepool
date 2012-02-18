@@ -61,7 +61,6 @@ var stripe = (function() {
   function setup() {
     pid = $('#request-id').val();
     uid = $('#user-id').val();
-    spinner = new Spinner();
 
     $('#stripe-form').submit(function(){
       if (!($('#stripe-pledgeAmount').val() > 0)) return false;
@@ -97,18 +96,17 @@ var stripe = (function() {
       expMonth : $('#stripe-ccMonth').val(),
       expYear  : $('#stripe-ccYear').val()
     }
-    spinner.spin($('#stripe-form')[0])
+    $('#stripe-form').spin();
     Stripe.createToken(card, self.handleStripeResponse);
   }
 
   function handleStripeResponse(status, response) {
-    console.log(status,response);
-    spinner.stop();
+    $('#stripe-form').spin(false);
     if (status == 200) {
       $('#stripe-token').val(response.id);
       $('#user-hasToken').val('1');
       $('#creditCardFields').fadeOut(function(){
-         $('#stripe-form')[0].submit();
+         $('#stripe-form').submit();
       })
     } else {
       $('#stripe-error').text(response.error.message);
