@@ -67,6 +67,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.status = 'open'
+    @request.price = 0;
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"
