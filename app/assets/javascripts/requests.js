@@ -11,6 +11,8 @@ $(function(){
 });
 
 function requestIssue(evt) {
+  $('#github-issue').hide();
+  if (evt.isDefaultPrevented()) return;
   evt.preventDefault();
   $('#github-issue-details').spin();
   var issueUrl = $('#github-issue-url').val();
