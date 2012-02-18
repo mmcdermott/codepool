@@ -1,21 +1,14 @@
-Please Select your method of payment: 
+Congratulations! Submit the closed github issue link with your pull request below and we'll contact you!
 
-<%= form_for @user, :url => "/submission" do |f| %>
+<%= form_tag "/submission" do %>
   <div class = "field">
-    <%= f.hidden_field :pid, :value => @request.id %>
+    <%= hidden_field_tag :pid, @request.id %>
   </div>
   <div class = "field">
-    Would you like to be paid via paypal? <br />
-    <%= f.check_box :paypal %>
+    <%= label_tag :Closing_Link %>
+    <%= text_field_tag :issue_link %>
   </div>
-  
-  <div class = "field">
-    Or would you like us to pay you by check? <br />
-    If so, enter your address here:   <%= f.text_field :address %>
-  </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag %>
   </div>
-
 <% end %>
