@@ -1,3 +1,40 @@
-<h1>New Request</h1>
+<div class="page" id="create-request">
+  <h1>New Request</h1>
 
-<%= render 'form' %>
+  <form id="github-issue">
+    <label for="github-issue-url">Github Issue URL</label> : <input type="text" id="github-issue-url" value="https://github.com/rails/rails/issues/5080">
+    <input type="submit" class='submit' value="Get issue">
+  </form>
+
+  <div id="github-issue-details">
+    <%= form_for @request do |f| %>
+      <% if @request.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+          <ul>
+            <% @request.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.hidden_field :title,  :class => "title" %>
+      <%= f.hidden_field :description, :class => "description" %>
+      <%= f.hidden_field :original_issue, :class => "original_issue" %>
+      <div class="actions">
+        <%= f.submit :class => 'btn primary', :value => "Confirm request" %>
+      </div>
+    <% end %>
+  </div>
+
+  <script id="github-issue-template" type="text/x-handlebars-template">
+    <h3 id="github-issue-title">{{title}}</h3>
+    <h4>Issue # <span id="github-issue-number">{{number}}</span></h4>
+    <h5>Opened <span id="github-issue-created_at">{{{time_since created_at}}}</span></h5>
+    <p id="github-issue-body">{{body}}</p>
+    <a href="{{html_url}}" id="github-issue-html_url">{{html_url}}</a>
+  </script>
+</div>
+

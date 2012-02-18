@@ -5,7 +5,7 @@
           <section class="request">
             <h3 class="title"><%= request.title %></h3>
             <span class="creationTime" data-seconds="<%= request.created_at.strftime('%s') %>"><%= request.created_at.strftime('%a, %b %d %Y') %></span>
-            <span class="pledgeTotal">$<%= '%d' % request.price %></span>
+            <span class="pledgeTotal">$<%= '%d' % (request.price || 0) %></span>
             <p class='description'>
               <%= request.description[0,125]+ '...' if request.description.length > 125%>
             </p>
