@@ -32,7 +32,9 @@
             <!--Must be logged in to pledge-->
           <% else %>
 						<form id="stripe-form" method="post" action='/submit_pledge'>
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 						  <fieldset id="pledgeBox">
+
 						    <input type="hidden" id="user-id" name="id" value="<%= @current_user.id %>">
 						    <input type="hidden" id="request-id" name="pid" value="<%= @request.id %>">
 						    <input type="hidden" id="stripe-token" name="token" value="<%= @current_user.stripe_token %>">
