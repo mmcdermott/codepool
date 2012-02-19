@@ -1,3 +1,5 @@
+require 'uri'
+
 class RequestsController < ApplicationController
   before_filter :authenticate, :only => [:new, :pre_submit, :destroy]
   before_filter :admin_user, :only => [:destroy, :close]
@@ -69,7 +71,13 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.status = 'open'
+    @request.original_issue ||= ''
     @request.price = 0;
+    uri = URI(@request.original_issue)
+    path = uri.path[1..-1]
+    (user, repo) = path.split '/'
+    @request.tag_list = [user,repo]
+
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"

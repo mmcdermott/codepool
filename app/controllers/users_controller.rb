@@ -91,7 +91,7 @@ class UsersController < ApplicationController
           if @donation.save
             @request.price += @donation.amount
             if @request.save
-              flash[:success] = "Request updated to $#{@request.price}!"
+              flash[:success] = "Request updated to $#{sprintf '%0.f', @request.price}!"
             end
           end
         end
