@@ -17,19 +17,17 @@
 </head>
 
 <body>
-<div class="container">
   <%= render 'layouts/header' %>
 
   <%= debug(params) if false && Rails.env.development? %>
   <%= render 'components/flash', { :flash => flash } %>
 
-  <div id="siteContent">
+  <div class="container content" id="siteContent">
     <%= yield %>
-    <div id="contentFooter"></div>
   </div>
+    <div id="contentFooter"></div>
 
   <%= render 'layouts/footer' %>
-</div>
 
 </body>
 </html>

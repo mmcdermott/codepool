@@ -2,25 +2,20 @@
   <h2>Welcome to codepool</h2>
 <% end %>
 
-
-<%= image_tag user_pic(@user), :width => "80px" %>
-
 <p>
   <b>User Name:</b>
   <%= @user.name %>
 </p>
 <p>
-  <b>Type:</b>
-  <%= (@user.company ? "Company" : "Individual") unless @user.company.nil? %>
-</p>
-<p>
   <b>Email:</b>
   <%= @user.email %>
-</p>
+  </p>
+  <% if !@user.description.nil? %>
 <p>
   <b>Description:</b>
   <%= @user.description %>
-</p>
+  </p>
+<% end %> 
 <table >
   <tr>
     <td> Request Name </td> 
@@ -31,7 +26,7 @@
     
     <% @donations.each do |donation| %>
       <tr>
-        <td> <%= donation.request.title %> </td>
+        <td> <%= link_to donation.request.title, request_path(donation.request) %> </td>
         <td><%= donation.dollar_amount %></td>
         <td> <%= donation.request.dollar_price %> </td>
         <td> <%= donation.created_at.strftime(" %b %d, %Y ") %></td>
