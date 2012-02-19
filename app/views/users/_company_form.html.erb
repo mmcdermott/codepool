@@ -13,24 +13,17 @@
   <div class="field">
     <%= f.hidden_field :company, value: true %>
   </div>
+
   <div class="field">
-    <%= f.label :company_name %>
-    <%= f.text_field :company_name %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :contact_person_name %>
-    <%= f.text_field :contact_person_name %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_email %>
+    <%= f.label "email" %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :contact_person_phone %>
-    <%= f.telephone_field :contact_person_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :Company_Description %>
+    <%= f.label "Description"%>
     <%= f.text_area :description %>
   </div>
   <div class="field">
@@ -38,9 +31,13 @@
     <%= f.text_field :website_link %>
   </div>
   <div class="field">
-    <%= f.label :tax_id %>
-    <%= f.text_field :tax_id %>
+    <%= f.label "Company Name" %>
+    <%= f.text_field :company_name %>
   </div>
+   <div class="field">
+    <%= f.label :contact_person_phone %>
+    <%= f.telephone_field :contact_person_phone %>
+
   <div class="actions">
     <%= f.submit :class => "btn primary"%>
   </div>

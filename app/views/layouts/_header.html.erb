@@ -1,22 +1,30 @@
-<header id="siteHeader">
-  <h1 id="companyName"><%= link_to "codepool", '/home' %></h1>
-  <nav>
-    <ul>
-      <li><%= link_to "Browse Requests", '/requests' %></li>
-      <li><%= link_to "Create", '/requests/new' %></li>
-      <li><%= link_to "How it Works", '/faq' %></li>
-      <li><%= link_to "Blog", '/blog' %></li>
-      <li><%= link_to "About", '/about' %></li>
-      <% if current_user.nil? %>
-        <li class="actionFocus"><%= link_to "Login", sign_in_path %></li>
-        <li class="actionFocus"><%= link_to "Register", sign_up_path %></li>
-      <% end %>
-    </ul>
-  </nav>
-</header>
-<% if current_user %>
-  <div id="userLinks">
-    <%= link_to current_user.name, current_user %>
-    <%= link_to "Sign Out", signout_path   %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container" >
+      <%= link_to "Codepool",'/home', :class => "brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Browse Requests", '/requests' %></li>
+          <li><%= link_to "Create", '/requests/new' %></li>
+          <li><%= link_to "How it Works", '/faq' %></li>
+          <li><%= link_to "Blog", '/blog' %></li>
+          <li><%= link_to "About", '/about' %></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <div id="userLinks">
+              <%= link_to current_user.name, current_user %>
+              <%= link_to "Sign Out", signout_path   %>
+            </div>
+
+          <% else  %>
+            <li class="actionFocus"><%= link_to "Login", sign_in_path %></li>
+            <li class="actionFocus"><%= link_to "Register", sign_up_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+
+

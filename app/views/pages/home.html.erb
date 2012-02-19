@@ -1,8 +1,8 @@
-<section id="homeIntro">
-  <div id="introVideo">
-
+<section class="row">
+  <div id="introVideo" class="span8">
+<img src="http://placehold.it/360x268" alt="">
   </div>
-  <div id="introText">
+  <div id="introText" class="span4">
     <h2>Sponsor Open Source Requests!</h2>
     <p>1000 companies pledged including:</p>
     <ul>
@@ -13,7 +13,8 @@
       <li>Codepool</li>
     </ul>
   </div>
-</section>
+  </section>
+
 <header id="requestListHeader">
   <%= render "components/request_list_header" %>
 </header>
@@ -25,4 +26,5 @@
 <section id="sideBar">
   <h4>Request Tags</h4>
   <%= render 'components/tag_cloud', { :tagged => Request }%>
+  <%= render 'components/side_sort' %>
 </section>
