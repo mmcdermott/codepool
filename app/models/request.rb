@@ -3,6 +3,8 @@ include ActionView::Helpers::NumberHelper
 class Request < ActiveRecord::Base
   has_many :donations 
   has_many :users, :through => :donations
+  has_many :submissions
+  has_many :solvers, :through => :submissions, source: :user
   
   validates :title, :presence => true
   validates :original_issue, :presence => true

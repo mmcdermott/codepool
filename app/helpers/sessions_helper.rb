@@ -1,7 +1,7 @@
 module SessionsHelper
 
 def deny_access
-  redirect_to sign_in_path, :notice => "Please sign in to access this page."
+  redirect_to sign_in_path, notice: "Please sign in to access this page."
 end
   
 def sign_out
@@ -15,7 +15,8 @@ def current_user=(user)
 end
 
 def current_user
-   @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+   @current_user ||= (User.find_by_id(session[:user_id]) if session[:user_id])
+   @current_user
 end
 
 def signed_in?

@@ -1,0 +1,25 @@
+Congratulations! Submit your recognized closing github pull request below and we'll contact you!
+
+<%= form_for [@request,@submission] do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+        <% @submission.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class = "field">
+    <%= f.hidden_field :user_id %>
+  </div>
+  <div class = "field">
+    <%= f.label :Closing_Link %>
+    <%= f.text_field :pull_request_link %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pull_request_link: MyString
+  accepted: 
+
+two:
+  pull_request_link: MyString
+  accepted: 
