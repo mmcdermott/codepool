@@ -22,7 +22,7 @@
           <%= link_to "Submit", pre_submit_request_path, :class => "btn small primary" %>
         <% end %>
 				<%= if authority? then link_to "Close Request (admin)", close_request_path end %>
-			</div>
+      </div>
 			<div class="span4">
 					<h3> Current Bounty</h3>
 					<h1><%= "$ " + @request.price.to_i().to_s() %> </h1>
@@ -63,6 +63,11 @@
 						  </fieldset>
 						</form>
           <% end %>
+
+          <% top_contributors(@request).each do |contributor, price| %>
+            <%= link_to contributor.name, contributor %> 
+          <% end %>
+
 			</div>
 		</div>
 	</div>
