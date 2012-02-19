@@ -1,3 +1,5 @@
+require 'uri'
+
 class RequestsController < ApplicationController
   before_filter :authenticate, :only => [:new, :pre_submit, :destroy]
   before_filter :admin_user, :only => [:destroy, :close]
@@ -10,6 +12,7 @@ class RequestsController < ApplicationController
     @requests = Request.active.funded.request_order(params[:order])
     @requests = @requests.sort_price(params[:max_price], params[:min_price])
 #   @requests = Request.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag]
     @requests = @requests.search_for(search_query).paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
@@ -31,6 +34,7 @@ class RequestsController < ApplicationController
 
   def close
     @request = Request.find(params[:id])
+    @submission = @request.submissions.find_by_accepted(true)
     if @request.status == "closed"
       flash[:notice] = "Request already closed"
     else
@@ -64,7 +68,13 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.status = 'open'
+    @request.original_issue ||= ''
     @request.price = 0;
+    uri = URI(@request.original_issue)
+    path = uri.path[1..-1]
+    (user, repo) = path.split '/'
+    @request.tag_list = [user,repo]
+
     respond_to do |format|
       if @request.save
         @request.link = "#{root_url}requests/#{@request.id}"
