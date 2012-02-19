@@ -11,10 +11,6 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.hidden_field :company, value: true %>
-  </div>
-
-  <div class="field">
     <%= f.label "Name" %>
     <%= f.text_field :name %>
   </div>
@@ -34,10 +30,6 @@
     <%= f.label "Company Name" %>
     <%= f.text_field :company_name %>
   </div>
-   <div class="field">
-    <%= f.label :contact_person_phone %>
-    <%= f.telephone_field :contact_person_phone %>
-
   <div class="actions">
     <%= f.submit :class => "btn primary"%>
   </div>

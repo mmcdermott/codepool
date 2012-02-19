@@ -2,8 +2,8 @@
   <div>
     <h2>Thank you for your pledge!</h2>
     <p>Be sure to share the following link with developers in your community so that they know they can receive a bounty for fixing this bug.</p>
-    <h3><a href="<%= url_for @request %>"><%= url_for :controller => 'requests', :id => @request.id, :only_path => false %></a></h3>
-    <input type='text' value='<%= url_for :controller => 'requests', :id => @request.id, :only_path => false %>'/>
+    <h3><%= link_to url_for(controller: :requests, id: @request.id, only_path: false), @request %></h3>
+    <!---<input type='text' value='<%= url_for :controller => 'requests', :id => @request.id, :only_path => false %>'/>--->
   </div>
 <% else %>
   <div>

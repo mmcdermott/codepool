@@ -1,15 +1,7 @@
 <h1>Editing user</h1>
 
 <div class="container">
-  <% if @form %>
-    <%= render @form %>
-  <% else %>
-    <div id="company_form">
-      <%= render 'company_form' %>
-    </div>
-  <% end %>
-</div>
-<div class="clear">
+  <%= render 'form' %>
 </div>
 
 <%= link_to 'Show', @user %> |
