@@ -16,6 +16,7 @@
   <%= link_to "Create a Request", new_request_path, :class=>"btn large primary"   %>
   <h4>Request Tags</h4>
   <%= render 'components/tag_cloud', { :tagged => Request }%>
+  <%= render 'components/side_sort' %>
 </section>
 
 
