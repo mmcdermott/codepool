@@ -64,30 +64,36 @@ class UsersController < ApplicationController
 
   def submit_pledge
     @user = User.find(params[:id]);
+
     email = @user.email
     token = @user.stripe_token
 
-    if (token.nil? || token.empty?)
-      if (params[:token])
-        customer = Stripe::Customer.create(
-          :card => params[:token],
-          :description => email
-        )
-        token = @user.stripe_token = customer.id
-        @user.save
+    if @user.id != params[:id].to_i
+      flash[:error] = "User does not match. Pledge could not be saved"
+    else
+      if (token.nil? || token.empty?)
+        if (params[:token])
+          customer = Stripe::Customer.create(
+            :card => params[:token],
+            :description => email
+          )
+          token = @user.stripe_token = customer.id
+          @user.save
+        end
       end
-    end
 
-    @request = Request.find(params[:pid])
+      if params[:confirm]
+        @request = Request.find(params[:pid])
 
-    if (token)  
-      amount = params[:pledge_amount].to_f
-      @donation = Donation.new({:request_id => params[:pid], :user_id => params[:id], :amount => amount})
-      if @donation.save
-        request = @request
-        request.price += @donation.amount
-        if request.save
-          flash[:success] = "Request price updated to #{request.price}"
+        if (token)
+          amount = params[:pledge_amount].to_f
+          @donation = Donation.new({:request_id => params[:pid], :user_id => params[:id], :amount => amount})
+          if @donation.save
+            @request.price += @donation.amount
+            if @request.save
+              flash[:success] = "Request updated to $#{@request.price}!"
+            end
+          end
         end
       end
     end
