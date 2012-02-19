@@ -2,12 +2,13 @@
 <header id="requestListHeader">
   <%= render "components/request_list_header" %>
 </header>
+<div class="row">
 
-<section id="requestList">
+<section id="requestList" class="span8">
   <%= render 'components/request_list', { :requests => @requests} %>
   <%= will_paginate @requests %>
 </section>
-<section id="sideBar">
+<section id="sideBar" class="span4">
   <h3> Codepool is Here to Help You </h3>
   <p>
     Codepool allows developers to finish requests faster by posting bounties for their most urgent issues. Creating a

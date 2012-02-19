@@ -3,27 +3,29 @@
 <% end %>
 
 <p>
-  <b>User Name:</b>
-  <%= @user.name %>
+<b>User Name:</b>
+<%= @user.name %>
 </p>
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
-  </p>
-  <% if !@user.description.nil? %>
-<p>
+<b>Email:</b>
+<%= @user.email %>
+</p>
+<% if !@user.description.nil? %>
+  <p>
   <b>Description:</b>
   <%= @user.description %>
   </p>
 <% end %> 
-<table >
-  <tr>
-    <td> Request Name </td> 
-    <td> <%= "#{@user.name}'s Donation" %> </td> 
-    <td> Total Bounty </td> 
-    <td> Deadline </td> 
-  </td>
-    
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th> Request Name </th>
+      <th> <%= "#{@user.name}'s Donation" %> </th>
+      <th> Total Bounty </th>
+      <th> Deadline </th>
+    </tr>
+  </thead>
+  <tbody>
     <% @donations.each do |donation| %>
       <tr>
         <td> <%= link_to donation.request.title, request_path(donation.request) %> </td>
@@ -32,6 +34,7 @@
         <td> <%= donation.created_at.strftime(" %b %d, %Y ") %></td>
       </tr>
     <% end %> 
+  </tbody>
 </table>
 
 <%= link_to 'Edit', edit_user_path(@user) %>

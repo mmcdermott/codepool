@@ -1,30 +1,33 @@
 <section class="row">
-  <div id="introVideo" class="span8">
-<img src="http://placehold.it/360x268" alt="">
-  </div>
-  <div id="introText" class="span4">
-    <h2>Sponsor Open Source Requests!</h2>
-    <p>1000 companies pledged including:</p>
-    <ul>
-      <li>Google</li>
-      <li>IBM</li>
-      <li>Oracle</li>
-      <li>Qualcomm</li>
-      <li>Codepool</li>
-    </ul>
-  </div>
-  </section>
-
-<header id="requestListHeader">
-  <%= render "components/request_list_header" %>
-</header>
-
-<section id="requestList">
-  <%= render "components/request_list", { :requests => @requests.funded} %>
+<div id="introVideo" class="span8">
+  <img src="http://placehold.it/360x268" alt="">
+</div>
+<div id="introText" class="span4">
+  <h2>Sponsor Open Source Requests!</h2>
+  <p>1000 companies pledged including:</p>
+  <ul>
+    <li>Google</li>
+    <li>IBM</li>
+    <li>Oracle</li>
+    <li>Qualcomm</li>
+    <li>Codepool</li>
+  </ul>
+</div>
 </section>
 
-<section id="sideBar">
+<header id="requestListHeader">
+<%= render "components/request_list_header" %>
+</header>
+<div class="row">
+
+  <section id="requestList" class="span8">
+  <%= render "components/request_list", { :requests => @requests.funded} %>
+  </section>
+
+  <section id="sideBar" class="span4">
   <h4>Request Tags</h4>
   <%= render 'components/tag_cloud', { :tagged => Request }%>
   <%= render 'components/side_sort' %>
-</section>
+  </section>
+
+</div>
