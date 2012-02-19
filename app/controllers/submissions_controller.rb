@@ -9,7 +9,6 @@ class SubmissionsController < ApplicationController
     @request = Request.find(params[:request_id])
     @user = current_user
     if @submission = @request.submissions.create(params[:submission])
-      @submission.set_unaccepted
       flash[:success] = "Submission Recorded"
       redirect_to thank_you_path
     else

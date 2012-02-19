@@ -31,6 +31,7 @@ class RequestsController < ApplicationController
 
   def close
     @request = Request.find(params[:id])
+    @submission = @request.submissions.find_by_accepted(true)
     if @request.status == "closed"
       flash[:notice] = "Request already closed"
     else
