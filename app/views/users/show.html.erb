@@ -30,14 +30,13 @@
   </td>
     
     <% @donations.each do |donation| %>
-  <tr>
-    <td> <%= donation.request.title %> </td>
-    <td><%= donation.dollar_amount %></td>
-    <td> <%= donation.request.dollar_price %> </td>
-    <td> <%= donation.created_at.strftime(" %b %d, %Y ") %></td>
-  </tr>
-<% end %> 
-</table
+      <tr>
+        <td> <%= donation.request.title %> </td>
+        <td><%= donation.dollar_amount %></td>
+        <td> <%= donation.request.dollar_price %> </td>
+        <td> <%= donation.created_at.strftime(" %b %d, %Y ") %></td>
+      </tr>
+    <% end %> 
+</table>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>

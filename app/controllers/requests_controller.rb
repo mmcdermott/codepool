@@ -28,11 +28,6 @@ class RequestsController < ApplicationController
       format.json { render json: @request }
     end
   end
-  
-  def pre_submit
-    @request = Request.find(params[:id])
-    @user = current_user
-  end
 
   def close
     @request = Request.find(params[:id])

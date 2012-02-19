@@ -1,4 +1,6 @@
 Codepool::Application.routes.draw do
+  get "submission/new"
+
   resources :tags
 
   resources :users do
@@ -13,8 +15,8 @@ Codepool::Application.routes.draw do
 #  resources :requests, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag, :autocomplete_tag_name]
   resources :requests do
     get :autocomplete_tag_name, :on => :collection
+    resources :submissions
     member do
-      get 'pre_submit'
       get 'close'
     end
   end

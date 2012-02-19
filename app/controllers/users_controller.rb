@@ -140,8 +140,12 @@ class UsersController < ApplicationController
     @user = current_user
     @request = Request.find(params[:pid])
     issue_link = params[:issue_link]
+    githubLinkRegex = /(https:\/\/|http:\/\/|)github.com\/\w+\/\w+\/pull\/\d+/  #This regex matches github's pull request links as of Sat. Feb. 18th, 2012. We may need to do a date verification down the line. 
     if issue_link.nil? || issue_link.empty?
       flash[:error] = "You must submit your closing pull request link"
+      redirect_to pre_submit_request_path(@request)
+    elsif !githubLinkRegex.match(issue_link)
+      flash[:error] = "Your link is not a github pull request link!"
       redirect_to pre_submit_request_path(@request)
     elsif !(@user.nil? or @request.nil?)
       Mailer.submission_confirmation(@user,@request, issue_link).deliver

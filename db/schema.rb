@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218203400) do
+ActiveRecord::Schema.define(:version => 20120219010626) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(:version => 20120218203400) do
     t.string   "original_issue"
     t.string   "link"
     t.string   "community"
+  end
+
+  create_table "submissions", :force => true do |t|
+    t.string   "pull_request_link"
+    t.boolean  "accepted"
+    t.integer  "request_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

@@ -19,7 +19,7 @@
         <% if @request.price > 0   %>
           <h3>Submit a Result </h3>
           <p>Solved this issue? Claim your bounty below.</p>
-          <%= link_to "Submit", pre_submit_request_path, :class => "btn small primary" %>
+          <%= link_to "Submit", new_request_submission_path(@request), :class => "btn small primary" %>
         <% end %>
 				<%= if authority? then link_to "Close Request (admin)", close_request_path end %>
 			</div>
