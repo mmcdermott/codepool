@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
   def index
     search_query = params[:search]
     @requests = Request.active.funded.request_order(params[:order])
+    @requests = @requests.sort_price(params[:max_price], params[:min_price])
 #   @requests = Request.active.search_for(search_query).paginate(:page => params[:page], :per_page => 20)
     @requests = @requests.search_for(search_query).paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|

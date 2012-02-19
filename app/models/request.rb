@@ -10,6 +10,12 @@ class Request < ActiveRecord::Base
   scope :active, :conditions => {:status => "open"}
   scope :funded, where('price > 0')
 
+  scope :sort_price, lambda {|max_price, min_price|
+    if max_price
+      where(:price => min_price..max_price)
+    end
+  }
+
   scope :request_order, lambda {|order_method| 
     case order_method
       when "recent"
