@@ -7,10 +7,11 @@ Codepool::Application.routes.draw do
     get 'new_info'
   end
 
-  match	'home',   :to => 'pages#home'
-  match	'home2',  :to => 'pages#home2'
-  match	'landing',:to => 'pages#landing'
-  match	'thanks', :to => 'pages#thanks'
+  match	'home',     to: 'pages#home'
+  match	'home2',    to: 'pages#home2'
+  match	'landing',  to: 'pages#landing'
+  match	'thanks',   to: 'pages#thanks'
+  match 'blog',     to: 'pages#blog'
   
 #  resources :requests, :only => [:index, :new, :create, :destroy, :show, :pre_submit, :tag, :autocomplete_tag_name]
   resources :requests do

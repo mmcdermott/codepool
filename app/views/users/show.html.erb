@@ -28,7 +28,7 @@
   <tbody>
     <% @donations.each do |donation| %>
       <tr>
-        <td> <%= link_to donation.request.title, request_path(donation.request) %> </td>
+        <td> <%= link_to truncate(donation.request.title), request_path(donation.request) %> </td>
         <td><%= donation.dollar_amount %></td>
         <td> <%= donation.request.dollar_price %> </td>
         <td> <%= donation.created_at.strftime(" %b %d, %Y ") %></td>
